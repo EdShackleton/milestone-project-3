@@ -1,0 +1,67 @@
+{% extends 'base.html'%} {% block content %}
+
+<h3>Edit Task</h3>
+<div class="row">
+    <form action="{{ url_for('update_jam', jam_id=jam._id) }}" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="jam_title" name="jam_title" type="text" class="validate" value="{{jam.jam_title}}">
+                <label for="icon_prefix">Jam Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="genre" name="genre" type="text" class="validate" value="{{jam.genre}}">
+                <label for="icon_prefix">Genre</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">today</i>
+                <input id="date_of_jam" name="date_of_jam" type="text" class="datepicker">
+                <label for="icon_prefix">Due Date</label>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <span class="input-field col s9">
+                <input id="jam_location" name="jam_location" type="text" class="validate" value="{{jam.jam_location}}">
+                <label for="icon_prefix">Address</label>
+            </span>
+            <span class="input-field col s3">
+                <input id="jam_postcode" name="jam_postcode" type="text" class="validate" value="{{jam.jam_postcode}}">
+                <label for="icon_prefix">Postcode</label>
+            </span>
+        </div>
+        <div class="row">
+            <span class="input-field col s6">
+                <input id="jam_members" name="jam_members" type="text" class="validate" value="{{jam.jam_members}}">
+                <label for="icon_prefix">Member Username</label>
+            </span>
+            <span class="input-field col s6">
+                <input id="jam_instruments" name="jam_instruments" type="text" class="validate" value="{{jam.jam_instruments}}">
+                <label for="icon_prefix">Instrument</label>
+            </span>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="jam_notes" name="jam_notes" type="text" class="validate" value="{{jam.jam_notes}}">
+                <label for="icon_prefix">Notes</label>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit">Done!</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        date_of_jam = Date.parse('{{jam.date_of_jam}}');
+        $('#date_of_jam').pickadate('picker').set('select', due_date, { format: 'dd/mm/yyyy' }).trigger('change');
+    });
+</script>
+
+{% endblock %}

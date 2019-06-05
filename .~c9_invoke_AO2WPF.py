@@ -30,15 +30,17 @@ def delete_jam(jam_id):
     mongo.db.jam_or_event.remove({'_id': ObjectId(jam_id)})
     return redirect(url_for('get_jams'))
 
-@app.route('/edit_jam/<jam_id>')
-def edit_jam(jam_id):
-    the_jam =  mongo.db.jam_or_event.find_one({"_id": ObjectId(jam_id)})
-    return render_template('editjam.html', jam=the_jam)
+@app.route('/edit_task/<task_id>')
+def edit_task(task_id):
+    the_task =  mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('edittask.html', task=the_task,
+                           categories=all_categories)
 
 @app.route('/update_jam/<jam_id>', methods=["POST"])
 def update_jam(jam_id):
     jams = mongo.db.jam_or_event
-    jams.update( {'_id': ObjectId(jam_id)},
+    jam_or_event.update( {'_id': ObjectId(jam_id)},
     {
         'jam_title':request.form.get('jam_title'),
         'genre':request.form.get('genre'),
@@ -49,7 +51,7 @@ def update_jam(jam_id):
         'jam_instruments':request.form.get('jam_instruments'),
         'jam_notes':request.form.get('jam_notes'),
     })
-    return redirect(url_for('get_jams'))
+    return redirect(url_for('get_tasks'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
