@@ -60,7 +60,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         date_of_jam = Date.parse('{{jam.date_of_jam}}');
-        $('#date_of_jam').pickadate('picker').set('select', due_date, { format: 'dd/mm/yyyy' }).trigger('change');
+        $('#date_of_jam').pickadate('picker').set('select', date_of_jam, { format: 'dd/mm/yyyy' }).trigger('change');
     });
 </script>
 

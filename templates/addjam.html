@@ -33,15 +33,15 @@
         </div>
         <div class="row" id="members-section">
             <span class="input-field col s6">
-                <input id="jam_members" name="jam_members" type="text">
+                <input id="jam_member_1" name="jam_member_1" type="text">
                 <label for="icon_prefix">Member Username</label>
             </span>
             <span class="input-field col s5">
-                <input id="jam_instruments" name="jam_instruments" type="text">
+                <input id="member_instrument_1" name="member_instrument_1" type="text">
                 <label for="icon_prefix">Instrument</label>
             </span>
             <span class="input-field col s1">
-                <a class="waves-effect waves-light btn" id="edit" onclick="newMember()">+</i></a>
+                <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
             </span>
             
         </div>
@@ -58,19 +58,23 @@
 </div>
 
 <script type="text/javascript">
+    var i = 1;
     function newMember() {
+        i++;
+        console.log(i);
         document.getElementById("members-section").innerHTML += `<span class="input-field col s6">
-                <input id="jam_members" name="jam_members" type="text">
+                <input id="jam_member_${[i]}" name="jam_member_${[i]}" type="text">
                 <label for="icon_prefix">Member Username</label>
             </span>
             <span class="input-field col s5">
-                <input id="jam_instruments" name="jam_instruments" type="text">
+            <input id="member_instrument_${[i]}" name="member_instrument_${[i]}" type="text">
                 <label for="icon_prefix">Instrument</label>
             </span>
             <span class="input-field col s1">
                 <a class="waves-effect waves-light btn" id="edit" onclick="newMember()">+</i></a>
-            </span>`
-    };
+            </span>`;
+        
+    }
 </script>
 
 {% endblock %}

@@ -25,21 +25,42 @@
             </div>
         </div>
 
-
         <div class="collapsible-body">
             <div class="row">
                 <div class="col s12"><p>Members</p></div>
+            </div>
+            <div class="row">
                 <div class="col s6">
-                {% for member in jam.jam_members %}
-                {{jam.jam_members}}
-                <br>
-                {% endfor %}
+                    {% for member in jam.jam_members %}
+                        {{jam.jam_members}}
+                    {% endfor %}
                 </div>
                 <div class="col s6">
-                {% for instrument in jam.jam_instruments %}
-                {{jam.jam_instruments}}
-                <br>
-                {% endfor %}
+                    {{jam.member_instrument_1}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    {{jam.jam_member_2}}
+                </div>
+                <div class="col s6">
+                    {{jam.member_instrument_2}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    {{jam.jam_member_3}}
+                </div>
+                <div class="col s6">
+                    {{jam.member_instrument_3}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    {{jam.jam_member_4}}
+                </div>
+                <div class="col s6">
+                    {{jam.member_instrument_4}}
                 </div>
             </div>
             <div class="row">
