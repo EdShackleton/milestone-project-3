@@ -1,7 +1,10 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+import bcrypt
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
+
+
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Jamtree'
@@ -9,62 +12,8 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:Welcome3@myfirstcluster-8h2g0.mong
 
 mongo = PyMongo(app)
 
-#login system
-
-@app.route('/go_to_login')
-def go_to_login():
-    return render_template('login.html')
-
-@app.route('/')
-def index():
-    if 'username' in session:
-        return 'Your are logged in as ' + session['username']
-    
-    return render_template(login.html)
-
-@app.route('/login', methods=['POST'])
-def login():
-    users = mongo.db.users
-    login_user = users.find_one({'name' : request.form['username']})
-    
-    if login_user:
-        if bcrypt.hashpw(request.form['password'].encode['utf-8'], login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-            
-        return 'Invalid username/password combination'
-
-@app.route('/register', methods=['POST', 'GET'])
-def register():
-    if request.method == 'POST':
-        users = mongo.db.users
-        existing_user.find_one({'name' : request.form['username']})
-        
-        if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'], bcrypt.gensalt())
-            users.insert({'name' : request.form['username'], 'password' : hashpass})
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-        
-        return 'That username already exists!'
-    
-    return render_template('register.html')
-        
-        
-    return ''
-
-if __name__ == '__main__':
-    app.secret_key = 'mysecret'
-    app.run(debug=True)
-
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(8080),
-            debug=True)
-
 #CRUD
 
-@app.route('/')
 @app.route('/get_jams')
 def get_jams():
     return render_template("jams.html", jams=mongo.db.jam_or_event.find())
@@ -104,3 +53,55 @@ def update_jam(jam_id):
         'jam_notes':request.form.get('jam_notes'),
     })
     return redirect(url_for('get_jams'))
+    
+
+
+#login system
+
+@app.route('/go_to_login')
+def go_to_login():
+    return render_template('login.html')
+
+@app.route('/')
+def index():
+    if 'username' in session:
+        return render_template('welcome.html', my_username=mongo.db.users.find())
+
+    return render_template('jams.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    users = mongo.db.users
+    login_user = users.find_one({'name' : request.form['username']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+
+    return 'Invalid username/password combination'
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name' : request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name' : request.form['username'], 'password' : hashpass,})
+            usersdb =  mongo.db.users
+            usersdb.insert_one(request.form.to_dict())
+
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+
+    return render_template('register.html')
+
+if __name__ == '__main__':
+    app.secret_key = 'mysecret'
+    app.run(host=os.environ.get('IP'),
+            port=int(8080),
+            debug=True)
