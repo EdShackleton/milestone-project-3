@@ -57,6 +57,11 @@ if __name__ == '__main__':
     app.secret_key = 'mysecret'
     app.run(debug=True)
 
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(8080),
+            debug=True)
+
 #CRUD
 
 @app.route('/')
@@ -99,8 +104,3 @@ def update_jam(jam_id):
         'jam_notes':request.form.get('jam_notes'),
     })
     return redirect(url_for('get_jams'))
-
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
-            debug=True)
