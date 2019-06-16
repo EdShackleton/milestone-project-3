@@ -35,7 +35,6 @@ virtualenvwrapper==4.8.4
 Werkzeug==0.15.4
 wrapt==1.11.1
 Click==7.0
-Flask==1.0.2
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
