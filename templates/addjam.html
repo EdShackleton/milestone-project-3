@@ -23,13 +23,17 @@
             </div>
         </div>
         <div class="row">
-            <span class="input-field col s9">
+            <span class="input-field col s8">
                 <input id="jam_location" name="jam_location" type="text">
                 <label for="icon_prefix">Address</label>
             </span>
-            <span class="input-field col s3">
-                <input id="jam_postcode" name="jam_postcode" type="text">
-                <label for="icon_prefix">Postcode</label>
+            <span class="input-field col s4">
+                <select id="county" name="county">
+                    <option value="" disabled selected>County</option>
+                    {% for my_county in counties %}
+                        <option value="{{my_county.counties}}">{{my_county.county}}</option>
+                    {% endfor %}
+                </select>
             </span>
         </div>
         <div class="row" id="members-section">

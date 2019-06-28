@@ -2,7 +2,12 @@
 
 <div class="row">
     <div class="col s8 offset-s2" "search-bar">
-        <input placeholder="Search by area" id="first_name" type="text" class="validate">
+        <select id="county" name="county">
+            <option value="" disabled selected>Search by county</option>
+            {% for my_county in counties %}
+            <option value="{{my_county.counties}}">{{my_county.county}}</option>
+            {% endfor %}
+        </select>
     </div>
 </div>
 
@@ -20,56 +25,38 @@
                     <div class="jam-title col s12">
                         <h4>{{jam.jam_title}}</h4>
                     </div>
-                    <div class="date col s6">
+                    <div class="date col s4">
                         {{jam.date_of_jam}}
                     </div>
-                    <div class="genre col s6">
+                    <div class="genre col s4">
                         {{jam.genre}}
                     </div>
                     <br>
-                    <div class="location col s12">
-                        {{jam.jam_location}} <br> {{jam.jam_postcode}}
+                    <div class="location col s4">
+                        {{jam.county}}
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="collapsible-body">
+        <div class="collapsible-body other-jam-info">
+            <div class="row">
+                <div class="location col s12">
+                        {{jam.jam_location}}
+                </div>
+            </div>
             <div class="row">
                 <div class="col s12"><p>Members</p></div>
             </div>
+            
             <div class="row">
                 <div class="col s6">
                     {% for member in jam.jam_members %}
-                        {{jam.jam_members}}
+                        {{jam.jam_members}} {{jam.user_instrument}}
                     {% endfor %}
                 </div>
                 <div class="col s6">
                     {{jam.member_instrument_1}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6">
-                    {{jam.jam_member_2}}
-                </div>
-                <div class="col s6">
-                    {{jam.member_instrument_2}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6">
-                    {{jam.jam_member_3}}
-                </div>
-                <div class="col s6">
-                    {{jam.member_instrument_3}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6">
-                    {{jam.jam_member_4}}
-                </div>
-                <div class="col s6">
-                    {{jam.member_instrument_4}}
                 </div>
             </div>
             <div class="row">

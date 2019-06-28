@@ -3,6 +3,7 @@
 .side-nav, .user-card, .jams-list {
   background-color: #F9F9F9;
   color: #25283D;
+  border-color: #9E9E9E;
 }
 
 /* background */
@@ -29,6 +30,20 @@
 }
 
 .jam-title {
+  font-family: "Permanent Marker", cursive;
+}
+
+.other-jam-info {
+  background-color: #E9E9E9;
+  border-color: #9E9E9E;
+}
+
+/* Users page */
+.user-card {
+  font-family: "Roboto", sans-serif;
+}
+
+.user-name {
   font-family: "Permanent Marker", cursive;
 }
 

@@ -16,16 +16,21 @@ mongo = PyMongo(app)
 
 @app.route('/get_jams')
 def get_jams():
-    return render_template("jams.html", jams=mongo.db.jam_or_event.find())
+    return render_template("jams.html",
+    jams=mongo.db.jam_or_event.find(),
+    counties=mongo.db.counties.find())
 
 @app.route('/get_users')
 def get_users():
-    return render_template("users.html", users=mongo.db.users.find())
+    return render_template("users.html",
+    users=mongo.db.users.find(),
+    counties=mongo.db.counties.find())
 
 @app.route('/add_jam')
 def add_jam():
     return render_template('addjam.html',
-    instruments=mongo.db.instruments.find())
+    instruments=mongo.db.instruments.find(),
+    counties=mongo.db.counties.find())
 
 @app.route('/insert_jam', methods=['POST'])
 def insert_jam():
@@ -104,7 +109,8 @@ def register():
     instruments=mongo.db.instruments.find())
 
     return render_template('register.html',
-    instruments=mongo.db.instruments.find())
+    instruments=mongo.db.instruments.find(),
+    counties=mongo.db.counties.find())
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
