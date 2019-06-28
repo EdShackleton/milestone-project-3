@@ -1,0 +1,49 @@
+/* Variables */
+/* Mixins */
+.side-nav, .user-card, .jams-list {
+  background-color: #F9F9F9;
+  color: #25283D;
+}
+
+/* background */
+#background {
+  background: url(assets/images/background-pic-2.jpg) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* nav bar */
+.nav-wrapper {
+  background-color: #7D1538;
+}
+
+.brand-logo {
+  font-family: "Permanent Marker", cursive;
+}
+
+/* Jams page */
+.jams-list {
+  font-family: "Roboto", sans-serif;
+}
+
+.jam-title {
+  font-family: "Permanent Marker", cursive;
+}
+
+/* other */
+.btn {
+  background-color: #F45866;
+}
+
+.btn:hover {
+  background-color: #7D1538;
+}
+
+.side-nav li > a:hover {
+  background-color: #7D1538;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,33 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="row">
+    <div class="col s8 offset-s2" "search-bar">
+        <input placeholder="Search by area" id="first_name" type="text" class="validate">
+    </div>
+</div>
+
+    {% for user in users %}
+<div class="user-card card">
+    <li>
+        <div class="row">
+            <div class="col s12">
+                <div class="user-name col s12">
+                    <h4>{{user.username}}</h4>
+                </div>
+                <div class="date col s6">
+                    {{user.user_location}}
+                </div>
+                <div class="genre col s6">
+                    {{user.user_postcode}}
+                </div>
+                <br>
+                <div class="location col s12">
+                    {{user.user_instrument_1}}
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+    {% endfor %}
+
+{% endblock %}

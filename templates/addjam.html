@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+<div class="container">
 <h3>Create a Jam</h3>
 <div class="row">
     <form action="{{ url_for('insert_jam') }}" method="POST" class="col s12">
@@ -33,12 +34,16 @@
         </div>
         <div class="row" id="members-section">
             <span class="input-field col s6">
-                <input id="jam_member_1" name="jam_member_1" type="text">
-                <label for="icon_prefix">Member Username</label>
+                <select id="instruments" name="member_instrument">
+                    <option value="" disabled selected>Instrument</option>
+                    {% for instrument in instruments %}
+                        <option value="{{instrument.instruments}}">{{instrument.instrument_name}}</option>
+                    {% endfor %}
+                </select>
             </span>
             <span class="input-field col s5">
-                <input id="member_instrument_1" name="member_instrument_1" type="text">
-                <label for="icon_prefix">Instrument</label>
+                <input id="jam_member_1" name="jam_member_1" type="text">
+                <label for="icon_prefix">Member Username</label>
             </span>
             <span class="input-field col s1">
                 <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
@@ -55,6 +60,7 @@
         </div>
     </form>
 </div>
+</div>
 
 <script type="text/javascript">
     var i = 1;
@@ -62,13 +68,18 @@
         i++;
         console.log(i);
         document.getElementById("members-section").innerHTML += `<span class="input-field col s6">
+            <select>
+                <option id="member_instrument_${[i]}" value="" disabled selected>Instrument</option>
+                {% for instrument in instruments %}
+                    <option value="{{instrument.instruments}}">{{instrument.instrument_name}}</option>
+                {% endfor %}
+            </select>
+            </span>
+            <span class="input-field col s5">
                 <input id="jam_member_${[i]}" name="jam_member_${[i]}" type="text">
                 <label for="icon_prefix">Member Username</label>
             </span>
-            <span class="input-field col s5">
-            <input id="member_instrument_${[i]}" name="member_instrument_${[i]}" type="text">
-                <label for="icon_prefix">Instrument</label>
-            </span>
+            
             <span class="input-field col s1">
                 <a class="waves-effect waves-light btn" id="edit" onclick="newMember()">+</i></a>
             </span>`;

@@ -1,8 +1,17 @@
 {% extends 'base.html'%} {% block content %}
+
+<div class="row">
+    <div class="col s8 offset-s2" "search-bar">
+        <input placeholder="Search by area" id="first_name" type="text" class="validate">
+    </div>
+</div>
+
 <ul class="collapsible" data-collapsible="accordion">
+    
     {% for jam in jams %}
+    
     <li>
-        <div class="collapsible-header">
+        <div class="collapsible-header jams-list">
             <div class="row">
                 <div class="col s1">
                     <i class="material-icons">expand_more</i>
@@ -77,6 +86,9 @@
             </div>
         </div>
     </li>
+    
     {% endfor %}
+    
 </ul>
+
 {% endblock %}

@@ -1,0 +1,57 @@
+/* Variables */
+
+$primary-color: #7D1538
+$secondary-color: #F9F9F9
+$third-color: #25283D
+$fourth-color: #C45AB3
+$fifth-color: #F45866
+
+/* Mixins */
+
+%box
+    background-color: $secondary-color
+    color: $third-color
+
+/* background */
+
+#background
+    background: url(assets/images/background-pic-2.jpg) no-repeat top center fixed
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+
+/* nav bar */
+
+.nav-wrapper
+    background-color: $primary-color
+
+.brand-logo
+    font-family: 'Permanent Marker', cursive
+
+/* Jams page */
+
+.jams-list
+    @extend %box
+    font-family: 'Roboto', sans-serif
+
+.jam-title
+    font-family: 'Permanent Marker', cursive
+
+/* other */
+    
+.user-card
+    @extend %box
+
+.btn
+    background-color: $fifth-color
+    
+.btn:hover
+    background-color: $primary-color
+
+.side-nav
+    @extend %box
+    
+.side-nav li>a:hover
+    background-color: $primary-color
+    color: white

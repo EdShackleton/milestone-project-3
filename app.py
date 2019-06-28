@@ -18,9 +18,14 @@ mongo = PyMongo(app)
 def get_jams():
     return render_template("jams.html", jams=mongo.db.jam_or_event.find())
 
+@app.route('/get_users')
+def get_users():
+    return render_template("users.html", users=mongo.db.users.find())
+
 @app.route('/add_jam')
 def add_jam():
-    return render_template('addjam.html')
+    return render_template('addjam.html',
+    instruments=mongo.db.instruments.find())
 
 @app.route('/insert_jam', methods=['POST'])
 def insert_jam():
@@ -75,7 +80,7 @@ def login():
     login_user = users.find_one({'name' : request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -85,20 +90,21 @@ def login():
 def register():
     if request.method == 'POST':
         users = mongo.db.users
-        existing_user = users.find_one({'name' : request.form['username']})
+        existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'name' : request.form['username'], 'password' : hashpass,})
-            usersdb =  mongo.db.users
-            usersdb.insert_one(request.form.to_dict())
-
+            users.insert({'username' : request.form['username'], 'password' : hashpass,
+            'user_location' : request.form['user_location'], 'user_postcode' : request.form['user_postcode'],
+            'user_instrument' : request.form['user_instrument']})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         
-        return 'That username already exists!'
+        return render_template('re-register.html',
+    instruments=mongo.db.instruments.find())
 
-    return render_template('register.html')
+    return render_template('register.html',
+    instruments=mongo.db.instruments.find())
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
