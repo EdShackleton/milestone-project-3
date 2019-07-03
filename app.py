@@ -36,7 +36,9 @@ def add_jam():
 def insert_jam():
     jams =  mongo.db.jam_or_event
     jams.insert_one(request.form.to_dict())
+    print(request.form)
     return redirect(url_for('get_jams'))
+    
 
 @app.route('/delete_jam/<jam_id>')
 def delete_jam(jam_id):
@@ -85,7 +87,7 @@ def login():
     login_user = users.find_one({'name' : request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['password'].encode('utf-8').decode(), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8').decode():
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -100,7 +102,7 @@ def register():
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'username' : request.form['username'], 'password' : hashpass,
-            'user_location' : request.form['user_location'], 'user_postcode' : request.form['user_postcode'],
+            'user_location' : request.form['user_location'], 'county' : request.form['county'],
             'user_instrument' : request.form['user_instrument']})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
