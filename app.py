@@ -36,6 +36,7 @@ def add_jam():
 def insert_jam():
     jams =  mongo.db.jam_or_event
     jams.insert_one(request.form.to_dict())
+    
     print(request.form)
     return redirect(url_for('get_jams'))
     
@@ -70,21 +71,25 @@ def update_jam(jam_id):
 
 #login system
 
+SALT = "asdfljheriun"
+
 @app.route('/go_to_login')
 def go_to_login():
     return render_template('login.html')
 
 @app.route('/')
 def index():
+    users = mongo.db.users
+    login_user = users.find_one({'username' : request.form['username']})
     if 'username' in session:
-        return render_template('welcome.html', my_username=mongo.db.users.find())
+        return render_template('welcome.html', login_user)
 
     return render_template('jams.html')
 
 @app.route('/login', methods=['POST'])
 def login():
     users = mongo.db.users
-    login_user = users.find_one({'name' : request.form['username']})
+    login_user = users.find_one({'username' : request.form['username']})
 
     if login_user:
         if bcrypt.hashpw(request.form['password'].encode('utf-8').decode(), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8').decode():
@@ -100,10 +105,9 @@ def register():
         existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            hashpass = (request.form['password'], SALT)
             users.insert({'username' : request.form['username'], 'password' : hashpass,
-            'user_location' : request.form['user_location'], 'county' : request.form['county'],
-            'user_instrument' : request.form['user_instrument']})
+            'user_county' : request.form['user_county'], 'user_instrument' : request.form['user_instrument']})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         
