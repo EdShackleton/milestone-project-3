@@ -88,14 +88,15 @@ def index():
 @app.route('/login', methods=['POST'])
 def login():
     users = mongo.db.users
+    hashpw =request.form['password'] + SALT
     login_user = users.find_one({'username' : request.form['username']})
 
     if login_user:
-        if hashpw(request.form['password'] + SALT) == login_user['password'] + SALT:
+        if hashpw == login_user['password']:
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
-    return 'Invalid username/password combination'
+    return render_template('re-login.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():

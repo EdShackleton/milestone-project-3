@@ -18,10 +18,10 @@
             </div>
             <div class="row">
                 <span class="input-field col s12">
-                    <select id="county" name="county">
+                    <select name="user_county">
                         <option value="" disabled selected>County</option>
-                        {% for my_county in counties %}
-                        <option value="{{my_county.counties}}">{{my_county.county}}</option>
+                        {% for county in counties %}
+                        <option value="{{county.county_name}}">{{county.county_name}}</option>
                         {% endfor %}
                     </select>
                 </span>
@@ -45,6 +45,4 @@
     </div>
 </div>
 
-
 {% endblock %}
-    

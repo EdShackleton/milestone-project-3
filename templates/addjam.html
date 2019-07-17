@@ -31,14 +31,14 @@
                 <select name="jam_county">
                     <option value="" disabled selected>County</option>
                     {% for county in counties %}
-                        <option value="{{county.county}}">{{county.county}}</option>
+                    <option value="{{county.county_name}}">{{county.county_name}}</option>
                     {% endfor %}
                 </select>
             </span>
         </div>
         <div class="row" id="members-section">
             <span class="input-field col s6">
-                <select name="member_instrument">
+                <select name="member_instrument_1">
                     <option value="" disabled selected>Instrument</option>
                     {% for instrument in instruments %}
                         <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
@@ -46,7 +46,7 @@
                 </select>
             </span>
             <span class="input-field col s5">
-                <input id="jam_member_1" name="jam_member_1" type="text">
+                <input id="jam_members" name="jam_member_1" type="text">
                 <label for="icon_prefix">Member Username</label>
             </span>
             <span class="input-field col s1">
@@ -72,20 +72,19 @@
         i++;
         console.log(i);
         document.getElementById("members-section").innerHTML += `<span class="input-field col s6">
-            <select>
-                <option id="member_instrument_${[i]}" value="" disabled selected>Instrument</option>
-                {% for instrument in instruments %}
-                    <option value="{{instrument.instruments}}">{{instrument.instrument_name}}</option>
-                {% endfor %}
-            </select>
+                <select name="member_instrument_${[i]}">
+                    <option value="" disabled selected>Instrument</option>
+                    {% for instrument in instruments %}
+                        <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                    {% endfor %}
+                </select>
             </span>
             <span class="input-field col s5">
-                <input id="jam_member_${[i]}" name="jam_member_${[i]}" type="text">
+                <input id="jam_members" name="jam_member_${[i]}" type="text">
                 <label for="icon_prefix">Member Username</label>
             </span>
-            
             <span class="input-field col s1">
-                <a class="waves-effect waves-light btn" id="edit" onclick="newMember()">+</i></a>
+                <a class="waves-effect waves-light btn" id="new-member_${[i]}" onclick="newMember()">+</i></a>
             </span>`;
         
     }
