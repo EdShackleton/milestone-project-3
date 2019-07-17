@@ -1,11 +1,11 @@
 {% extends 'base.html'%} {% block content %}
 
 <div class="row">
-    <div class="col s8 offset-s2" "search-bar">
-        <select id="county" name="county">
-            <option value="" disabled selected>Search by county</option>
-            {% for my_county in counties %}
-            <option value="{{my_county.counties}}">{{my_county.county}}</option>
+    <div class="col s8 offset-s2 search-bar">
+        <select id="search-county" name="county">
+            <option value="" disabled selected>Search by county...</option>
+            {% for county in counties %}
+            <option value="{{county.county_name}}">{{county.county_name}}</option>
             {% endfor %}
         </select>
     </div>

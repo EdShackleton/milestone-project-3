@@ -1,41 +1,69 @@
 /* Variables */
 /* Mixins */
-.side-nav, .user-card, .jams-list {
+.side-nav, .user-card, .jams-list, .blank-background {
   background-color: #F9F9F9;
-  color: #25283D;
-  border-color: #9E9E9E;
+  color: #383838;
+  border-color: white;
+  opacity: 0.9;
+}
+
+.user-name, .jam-title, .brand-logo {
+  font-family: "Lalezar", cursive;
 }
 
 /* background */
-#background {
-  background: url(assets/images/background-pic-2.jpg) no-repeat top center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+body {
+  background-color: #d97eff;
+}
+
+.blank-background {
+  padding: 3% 10%;
+  margin-top: 5px;
 }
 
 /* nav bar */
 .nav-wrapper {
   background-color: #7D1538;
+  font-family: "Roboto", sans-serif;
 }
 
 .brand-logo {
-  font-family: "Permanent Marker", cursive;
+  margin: 0px 15px;
+}
+
+/* search bar */
+.search-bar {
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  background-color: #f5ecf9;
+  padding: 0 !important;
+  color: #383838;
+  font-family: "Roboto", sans-serif;
+  margin-top: 5px;
+}
+
+.select-wrapper input.select-dropdown {
+  margin: 0;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+.dropdown-content li > span {
+  color: #383838;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Jams page */
 .jams-list {
   font-family: "Roboto", sans-serif;
-}
-
-.jam-title {
-  font-family: "Permanent Marker", cursive;
+  text-align: center;
 }
 
 .other-jam-info {
-  background-color: #E9E9E9;
-  border-color: #9E9E9E;
+  background-color: #F4CEFF;
+  border-color: white;
 }
 
 /* Users page */
@@ -43,22 +71,20 @@
   font-family: "Roboto", sans-serif;
 }
 
-.user-name {
-  font-family: "Permanent Marker", cursive;
-}
-
 /* other */
 .btn {
-  background-color: #F45866;
+  background-color: #b4ffba;
 }
 
 .btn:hover {
-  background-color: #7D1538;
+  background-color: #d97eff;
 }
 
 .side-nav li > a:hover {
   background-color: #7D1538;
   color: white;
 }
+
+/* When starting to use sass, type into console: sass --watch static/css/style.sass:static/css/style.css */
 
 /*# sourceMappingURL=style.css.map */

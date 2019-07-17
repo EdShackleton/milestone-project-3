@@ -1,33 +1,33 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-<h3>Create a Jam</h3>
-<div class="row">
-    <form action="{{ url_for('insert_jam') }}" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="jam_title" name="jam_title" type="text">
-                <label for="icon_prefix">Jam Name</label>
+<div class="blank-background">
+    <h3>Create a Jam</h3>
+    <div class="row">
+        <form action="{{ url_for('insert_jam') }}" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="jam_title" name="jam_title" type="text">
+                    <label for="icon_prefix">Jam Name</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="genre" name="genre" type="text">
-                <label for="icon_prefix">Genre</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="genre" name="genre" type="text">
+                    <label for="icon_prefix">Genre</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="date_of_jam" name="date_of_jam" type="text" class="datepicker">
-                <label for="icon_prefix">Date</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">today</i>
+                    <input id="date_of_jam" name="date_of_jam" type="text" class="datepicker">
+                    <label for="icon_prefix">Date</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <span class="input-field col s8">
+            <div class="row">
+                <span class="input-field col s8">
                 <input id="jam_location" name="jam_location" type="text">
                 <label for="icon_prefix">Address</label>
             </span>
-            <span class="input-field col s4">
+                <span class="input-field col s4">
                 <select name="jam_county">
                     <option value="" disabled selected>County</option>
                     {% for county in counties %}
@@ -35,9 +35,9 @@
                     {% endfor %}
                 </select>
             </span>
-        </div>
-        <div class="row" id="members-section">
-            <span class="input-field col s6">
+            </div>
+            <div class="row" id="members-section">
+                <span class="input-field col s6">
                 <select name="member_instrument_1">
                     <option value="" disabled selected>Instrument</option>
                     {% for instrument in instruments %}
@@ -45,29 +45,30 @@
                     {% endfor %}
                 </select>
             </span>
-            <span class="input-field col s5">
+                <span class="input-field col s5">
                 <input id="jam_members" name="jam_member_1" type="text">
                 <label for="icon_prefix">Member Username</label>
             </span>
-            <span class="input-field col s1">
+                <span class="input-field col s1">
                 <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
             </span>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="jam_notes" name="jam_notes" type="text">
-                <label for="icon_prefix">Notes</label>
             </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit">Done!</button>
-        </div>
-    </form>
-</div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="jam_notes" name="jam_notes" type="text">
+                    <label for="icon_prefix">Notes</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit">Done!</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script type="text/javascript">
     var i = 1;
+
     function newMember() {
         i++;
         console.log(i);
@@ -86,7 +87,7 @@
             <span class="input-field col s1">
                 <a class="waves-effect waves-light btn" id="new-member_${[i]}" onclick="newMember()">+</i></a>
             </span>`;
-        
+
     }
 </script>
 
