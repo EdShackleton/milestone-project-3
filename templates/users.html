@@ -17,17 +17,14 @@
         <div class="row">
             <div class="col s12">
                 <div class="user-name col s12">
-                    <h4>{{user.username}}</h4>
-                </div>
-                <div class="date col s6">
-                    {{user.user_location}}
+                    <h4><b>{{user.username}}</b></h4>
                 </div>
                 <div class="genre col s6">
-                    {{user.user_postcode}}
+                    <p>County: {{user.user_county}}</p>
                 </div>
                 <br>
-                <div class="location col s12">
-                    {{user.user_instrument_1}}
+                <div class="instrument col s6">
+                    <p>Instrument: {{user.user_instrument}}</p>
                 </div>
             </div>
         </div>

@@ -80,9 +80,8 @@ def go_to_login():
 @app.route('/')
 def index():
     users = mongo.db.users
-    login_user = users.find_one({'username' : request.form['username']})
     if 'username' in session:
-        return render_template('welcome.html', login_user)
+        return render_template('welcome.html')
 
     return render_template('jams.html')
 
@@ -92,7 +91,7 @@ def login():
     login_user = users.find_one({'username' : request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8').decode(), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8').decode():
+        if hashpw(request.form['password'] + SALT) == login_user['password'] + SALT:
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -105,9 +104,11 @@ def register():
         existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
-            hashpass = (request.form['password'], SALT)
-            users.insert({'username' : request.form['username'], 'password' : hashpass,
-            'user_county' : request.form['user_county'], 'user_instrument' : request.form['user_instrument']})
+            hashpass = (request.form['password'] + SALT)
+            users.insert({'username' : request.form['username'], 
+            'password' : hashpass, 
+            'user_county' : request.form['user_county'],
+            'user_instrument' : request.form['user_instrument']})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         

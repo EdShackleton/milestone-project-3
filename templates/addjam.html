@@ -28,20 +28,20 @@
                 <label for="icon_prefix">Address</label>
             </span>
             <span class="input-field col s4">
-                <select id="county" name="county">
+                <select name="jam_county">
                     <option value="" disabled selected>County</option>
-                    {% for my_county in counties %}
-                        <option value="{{my_county.county}}">{{my_county.county}}</option>
+                    {% for county in counties %}
+                        <option value="{{county.county}}">{{county.county}}</option>
                     {% endfor %}
                 </select>
             </span>
         </div>
         <div class="row" id="members-section">
             <span class="input-field col s6">
-                <select id="instruments" name="member_instrument">
+                <select name="member_instrument">
                     <option value="" disabled selected>Instrument</option>
                     {% for instrument in instruments %}
-                        <option value="{{instrument.instruments}}">{{instrument.instrument_name}}</option>
+                        <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                     {% endfor %}
                 </select>
             </span>
