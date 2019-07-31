@@ -13,7 +13,7 @@
 
 /* background */
 body {
-  background: url(images/background-pic-purple.jpg) top right no-repeat;
+  background: url(/static/images/background-pic-purple.jpg) bottom left no-repeat;
   background-attachment: fixed;
 }
 
@@ -24,7 +24,7 @@ body {
 
 /* nav bar */
 .nav-wrapper {
-  background-color: #7D1538;
+  background-color: #C45AB3;
   font-family: "Roboto", sans-serif;
 }
 
@@ -71,6 +71,7 @@ body {
 .other-jam-info {
   background-color: #F4CEFF;
   border-color: white;
+  opacity: 0.9;
 }
 
 /* Users page */
