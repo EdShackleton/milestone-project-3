@@ -1,59 +1,76 @@
 {% extends 'base.html'%} {% block content %}
-
-<h3>Edit Task</h3>
-<div class="row">
-    <form action="{{ url_for('update_jam', jam_id=jam._id) }}" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="jam_title" name="jam_title" type="text" class="validate" value="{{jam.jam_title}}">
-                <label for="icon_prefix">Jam Name</label>
+<div class="blank-background">
+    <h3 class="jam-title">Edit Jam</h3>
+    <div class="row">
+        <form action="{{ url_for('update_jam', jam_id=jam._id) }}" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="jam_title" name="jam_title" type="text" class="validate" value="{{jam.jam_title}}">
+                    <label for="icon_prefix">Jam Name</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="genre" name="genre" type="text" class="validate" value="{{jam.genre}}">
-                <label for="icon_prefix">Genre</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <p>created by {{ username }}</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="date_of_jam" name="date_of_jam" type="text" class="datepicker">
-                <label for="icon_prefix">Due Date</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="genre" name="genre" type="text" class="validate" value="{{jam.genre}}">
+                    <label for="icon_prefix">Genre</label>
+                </div>
             </div>
-        </div>
-        
-        
-        <div class="row">
-            <span class="input-field col s9">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">today</i>
+                    <input id="date_of_jam" name="date_of_jam" type="text" class="datepicker">
+                    <label for="icon_prefix">Due Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <span class="input-field col s8">
                 <input id="jam_location" name="jam_location" type="text" class="validate" value="{{jam.jam_location}}">
                 <label for="icon_prefix">Address</label>
             </span>
-            <span class="input-field col s3">
-                <input id="jam_postcode" name="jam_postcode" type="text" class="validate" value="{{jam.jam_postcode}}">
-                <label for="icon_prefix">Postcode</label>
+                <span class="input-field col s4">
+                <select name="jam_county">
+                    <option value="" disabled selected>{{jam.jam_county}}</option>
+                    {% for county in counties %}
+                    <option value="{{county.county_name}}">{{county.county_name}}</option>
+                    {% endfor %}
+                </select>
             </span>
-        </div>
-        <div class="row">
-            <span class="input-field col s6">
-                <input id="jam_members" name="jam_members" type="text" class="validate" value="{{jam.jam_members}}">
-                <label for="icon_prefix">Member Username</label>
-            </span>
-            <span class="input-field col s6">
-                <input id="jam_instruments" name="jam_instruments" type="text" class="validate" value="{{jam.jam_instruments}}">
-                <label for="icon_prefix">Instrument</label>
-            </span>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="jam_notes" name="jam_notes" type="text" class="validate" value="{{jam.jam_notes}}">
-                <label for="icon_prefix">Notes</label>
+            
+            
+            <div class="row" id="members-section">
+                <span class="input-field col s6">
+                    <select name="member_instrument_1">
+                        <option value="" disabled selected>{{jam.member_instrument_1}}</option>
+                        {% for instrument in instruments %}
+                            <option value="{{jam.member_instrument_1}}">{{instrument.instrument_name}}</option>
+                        {% endfor %}
+                    </select>
+                </span>
+                <span class="input-field col s5">
+                    <input id="jam_members" name="jam_member_1" type="text" class="validate" value="{{jam.jam_member_1}}">
+                    <label for="icon_prefix">Member Username</label>
+                </span>
+                <span class="input-field col s1">
+                    <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
+                </span>
             </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit">Done!</button>
-        </div>
-    </form>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="jam_notes" name="jam_notes" type="text" class="validate" value="{{jam.jam_notes}}">
+                    <label for="icon_prefix">Notes</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit">Done!</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

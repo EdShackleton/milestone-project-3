@@ -33,12 +33,16 @@ body
 /* nav bar */
 
 .nav-wrapper
-    background-color: $fourth-color
+    background-color: $third-color
     font-family: 'Roboto', sans-serif
+    
 
 .brand-logo
     @extend %title
     margin: 0px 15px
+
+#username
+    font-style: italic
 
 /* search bar */
 
@@ -59,13 +63,16 @@ body
     width: 100%
     font-size: 16px
     height: 38px
+    padding-left: 5px
 
 .dropdown-content li>span
     color: #383838
     font-family: 'Roboto', sans-serif
 
-.search-button
-    margin-left: 15px
+#search-button
+    height: 38px
+    margin-top: 5px
+    border-radius: 2px
 
 /* Jams page */
 
@@ -111,5 +118,9 @@ body
 
 .row
     width: 100%
+    margin: 5px
+
+p
+    margin: 0
     
 /* When starting to use sass, type into console: sass --watch static/css/style.sass:static/css/style.css */

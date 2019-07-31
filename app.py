@@ -63,7 +63,11 @@ def delete_jam(jam_id):
 @app.route('/edit_jam/<jam_id>')
 def edit_jam(jam_id):
     the_jam =  mongo.db.jam_or_event.find_one({"_id": ObjectId(jam_id)})
-    return render_template('editjam.html', jam=the_jam)
+    return render_template('editjam.html',
+    jam=the_jam,
+    instruments=mongo.db.instruments.find(),
+    counties=mongo.db.counties.find(),
+    username=session['username'])
 
 @app.route('/update_jam/<jam_id>', methods=["POST"])
 def update_jam(jam_id):
@@ -86,12 +90,20 @@ def update_jam(jam_id):
 
 #search options
 
+
+
 #login system
 
 SALT = "asdfljheriun"
 
 @app.route('/go_to_login')
 def go_to_login():
+    user_logged_in = 'username' in session
+    
+    if user_logged_in:
+        session.clear()
+        return redirect(url_for('get_jams'))
+    
     return render_template('login.html')
 
 @app.route('/')
@@ -100,25 +112,23 @@ def index():
     if 'username' in session:
         return render_template('welcome.html', username=session['username'])
 
-    return render_template('jams.html')
+    return render_template('jams.html',
+        jams=mongo.db.jam_or_event.find(),
+        counties=mongo.db.counties.find(),
+        genres=mongo.db.genres.find())
 
 @app.route('/login', methods=['POST'])
 def login():
     users = mongo.db.users
     hashpw =request.form['password'] + SALT
     login_user = users.find_one({'username' : request.form['username']})
-
+        
     if login_user:
         if hashpw == login_user['password']:
             session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            return redirect(url_for('get_jams'))
 
     return render_template('re-login.html')
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    return render_template('logout.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -133,7 +143,7 @@ def register():
             'user_county' : request.form['user_county'],
             'user_instrument' : request.form['user_instrument']})
             session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            return redirect(url_for('get_jams'))
         
         return render_template('re-register.html',
     instruments=mongo.db.instruments.find())

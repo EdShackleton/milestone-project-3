@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="blank-background">
-    <h3>Create a Jam</h3>
+    <h3 class="jam-title">Create a Jam</h3>
     <div class="row">
         <form action="{{ url_for('insert_jam') }}" method="POST" class="col s12">
             <div class="row">
@@ -43,20 +43,20 @@
             </div>
             <div class="row" id="members-section">
                 <span class="input-field col s6">
-                <select name="member_instrument_1">
-                    <option value="" disabled selected>Instrument</option>
-                    {% for instrument in instruments %}
-                        <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
-                    {% endfor %}
-                </select>
-            </span>
+                    <select name="member_instrument_1">
+                        <option value="" disabled selected>Instrument</option>
+                        {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                        {% endfor %}
+                    </select>
+                </span>
                 <span class="input-field col s5">
-                <input id="jam_members" name="jam_member_1" type="text">
-                <label for="icon_prefix">Member Username</label>
-            </span>
+                    <input id="jam_members" name="jam_member_1" type="text">
+                    <label for="icon_prefix">Member Username</label>
+                </span>
                 <span class="input-field col s1">
-                <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
-            </span>
+                    <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
+                </span>
             </div>
             <div class="row">
                 <div class="input-field col s12">
