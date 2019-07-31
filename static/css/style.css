@@ -13,7 +13,8 @@
 
 /* background */
 body {
-  background-color: #d97eff;
+  background: url(images/background-pic-purple.jpg) top right no-repeat;
+  background-attachment: fixed;
 }
 
 .blank-background {
@@ -41,6 +42,7 @@ body {
   color: #383838;
   font-family: "Roboto", sans-serif;
   margin-top: 5px;
+  height: 38px;
 }
 
 .select-wrapper input.select-dropdown {
@@ -48,11 +50,16 @@ body {
   border: none;
   width: 100%;
   font-size: 16px;
+  height: 38px;
 }
 
 .dropdown-content li > span {
   color: #383838;
   font-family: "Roboto", sans-serif;
+}
+
+.search-button {
+  margin-left: 15px;
 }
 
 /* Jams page */

@@ -16,21 +16,36 @@ mongo = PyMongo(app)
 
 @app.route('/get_jams')
 def get_jams():
+    user_logged_in = 'username' in session
+    if user_logged_in:
+        return render_template("jams.html",
+        jams=mongo.db.jam_or_event.find(),
+        counties=mongo.db.counties.find(),
+        genres=mongo.db.genres.find(),
+        username=session['username'])
     return render_template("jams.html",
-    jams=mongo.db.jam_or_event.find(),
-    counties=mongo.db.counties.find())
+        jams=mongo.db.jam_or_event.find(),
+        counties=mongo.db.counties.find(),
+        genres=mongo.db.genres.find())
 
 @app.route('/get_users')
 def get_users():
+    user_logged_in = 'username' in session
+    if user_logged_in:
+        return render_template("users.html",
+        users=mongo.db.users.find(),
+        counties=mongo.db.counties.find(),
+        username=session['username'])
     return render_template("users.html",
-    users=mongo.db.users.find(),
-    counties=mongo.db.counties.find())
+        users=mongo.db.users.find(),
+        counties=mongo.db.counties.find())
 
 @app.route('/add_jam')
 def add_jam():
     return render_template('addjam.html',
     instruments=mongo.db.instruments.find(),
-    counties=mongo.db.counties.find())
+    counties=mongo.db.counties.find(),
+    username=session['username'])
 
 @app.route('/insert_jam', methods=['POST'])
 def insert_jam():
@@ -40,7 +55,6 @@ def insert_jam():
     print(request.form)
     return redirect(url_for('get_jams'))
     
-
 @app.route('/delete_jam/<jam_id>')
 def delete_jam(jam_id):
     mongo.db.jam_or_event.remove({'_id': ObjectId(jam_id)})
@@ -53,21 +67,24 @@ def edit_jam(jam_id):
 
 @app.route('/update_jam/<jam_id>', methods=["POST"])
 def update_jam(jam_id):
-    jams = mongo.db.jam_or_event
-    jams.update( {'_id': ObjectId(jam_id)},
-    {
-        'jam_title':request.form.get('jam_title'),
-        'genre':request.form.get('genre'),
-        'date_of_jam': request.form.get('date_of_jam'),
-        'jam_location': request.form.get('jam_location'),
-        'jam_postcode':request.form.get('jam_postcode'),
-        'jam_members':request.form.get('jam_members'),
-        'jam_instruments':request.form.get('jam_instruments'),
-        'jam_notes':request.form.get('jam_notes'),
-    })
-    return redirect(url_for('get_jams'))
+    user_logged_in = 'username' in session
+    if user_logged_in:
+        jams = mongo.db.jam_or_event
+        jams.update( {'_id': ObjectId(jam_id)},
+        {
+            'jam_title':request.form.get('jam_title'),
+            'genre':request.form.get('genre'),
+            'date_of_jam': request.form.get('date_of_jam'),
+            'jam_location': request.form.get('jam_location'),
+            'jam_postcode':request.form.get('jam_postcode'),
+            'jam_members':request.form.get('jam_members'),
+            'jam_instruments':request.form.get('jam_instruments'),
+            'jam_notes':request.form.get('jam_notes'),
+        })
+        return redirect(url_for('get_jams'))
     
 
+#search options
 
 #login system
 
@@ -81,7 +98,7 @@ def go_to_login():
 def index():
     users = mongo.db.users
     if 'username' in session:
-        return render_template('welcome.html')
+        return render_template('welcome.html', username=session['username'])
 
     return render_template('jams.html')
 
@@ -97,6 +114,11 @@ def login():
             return redirect(url_for('index'))
 
     return render_template('re-login.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return render_template('logout.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():

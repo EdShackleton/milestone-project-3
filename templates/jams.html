@@ -1,8 +1,8 @@
 {% extends 'base.html'%} {% block content %}
-
+<a class="btn waves-effect waves-light" href="{{ url_for('logout') }}">Logout</a>
 <div class="row">
     <div class="col s8 offset-s2 search-bar">
-        <select id="search-county" name="county">
+        <select id="search-county-or-genre" name="county">
             <option value="" disabled selected> Search by county...</option>
             {% for county in counties %}
             <option value="{{county.county_name}}">{{county.county_name}}</option>
@@ -77,6 +77,5 @@
     {% endfor %}
     
 </ul>
-
 
 {% endblock %}
