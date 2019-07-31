@@ -93,6 +93,10 @@ body {
   color: white;
 }
 
+.row {
+  width: 100%;
+}
+
 /* When starting to use sass, type into console: sass --watch static/css/style.sass:static/css/style.css */
 
 /*# sourceMappingURL=style.css.map */
