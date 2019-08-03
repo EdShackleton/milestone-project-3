@@ -25,24 +25,28 @@
                     <h4>{{jam.jam_title}}</h4>
                 </div>
                 <div class="date col s4">
-                    {{jam.date_of_jam}}
+                    <p>{{jam.date_of_jam}}</p>
                 </div>
                 <div class="genre col s4">
-                    {{jam.genre}}
+                    <p>{{jam.genre}}</p>
                 </div>
                 <div class="location col s4">
-                    {{jam.jam_county}}
+                    <p>{{jam.jam_county}}</p>
                 </div>
             </div>
         </div>
 
         <div class="collapsible-body other-jam-info">
             <div class="row">
+                <div class="col s12"><p><strong>created by {{jam.jam_owner}}</strong></p></div>
+            </div>
+            <br>
+            <div class="row">
                 <div class="col s12"><p><strong>Address</strong></p></div>
             </div>
             <div class="row">
                 <div class="location col s12">
-                        {{jam.jam_location}}
+                        <p>{{jam.jam_location}}</p>
                 </div>
             </div>
             <div class="row">
@@ -59,12 +63,13 @@
                     <p><strong>Notes</strong></p>
                 </div>
                 <div class="col s10">
-                    {{jam.jam_notes}}
+                    <p>{{jam.jam_notes}}</p>
                 </div>
+                {% if user_logged_in %}
                 <div class="col s2">
                     <a href="{{url_for('edit_jam', jam_id=jam._id)}}" class="btn-floating btn-small waves-effect waves-light btn" id="edit"><i class="material-icons">edit</i></a>
-                    <a href="{{url_for('delete_jam', jam_id=jam._id)}}" class="btn-floating btn-small waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </li>

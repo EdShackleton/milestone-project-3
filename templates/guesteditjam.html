@@ -5,36 +5,26 @@
         <form action="{{ url_for('edit_jam', jam_id=jam._id) }}" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="jam_title" name="jam_title" type="text" class="validate" value="{{jam.jam_title}}">
-                    <label for="icon_prefix">Jam Name</label>
+                    <h1>{{jam.jam_title}}</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="genre" name="genre" type="text" class="validate" value="{{jam.genre}}">
-                    <label for="icon_prefix">Genre</label>
+                    <p>{{jam.genre}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">today</i>
-                    <input id="date_of_jam" name="date_of_jam" type="text" class="datepicker">
-                    <label for="icon_prefix">Due Date</label>
+                    <p>{{jam.date_of_jam}}</p>
                 </div>
             </div>
             <div class="row">
                 <span class="input-field col s8">
-                <input id="jam_location" name="jam_location" type="text" class="validate" value="{{jam.jam_location}}">
-                <label for="icon_prefix">Address</label>
-            </span>
+                    <p>{{jam.jam_location}}</p>
+                </span>
                 <span class="input-field col s4">
-                <select name="jam_county">
-                    <option value="{{jam.jam_county}}" disabled selected>{{jam.jam_county}}</option>
-                    {% for county in counties %}
-                    <option value="{{county.county_name}}">{{county.county_name}}</option>
-                    {% endfor %}
-                </select>
-            </span>
+                    <p>{{jam.jam_county}}</p>
+                </span>
             
             
             <div class="row" id="members-section">
@@ -63,7 +53,6 @@
             </div>
             <div class="row">
                 <button class="btn waves-effect waves-light" type="submit">Done!</button>
-                <a href="{{url_for('delete_jam', jam_id=jam._id)}}" class="btn-floating btn-small waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a>
             </div>
         </form>
     </div>

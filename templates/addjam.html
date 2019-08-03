@@ -2,16 +2,11 @@
 <div class="blank-background">
     <h3 class="jam-title">Create a Jam</h3>
     <div class="row">
-        <form action="{{ url_for('insert_jam') }}" method="POST" class="col s12">
+        <form action="{{ url_for('add_jam') }}" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="jam_title" name="jam_title" type="text">
                     <label for="icon_prefix">Jam Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <p>created by {{ username }}</p>
                 </div>
             </div>
             <div class="row">
@@ -77,21 +72,22 @@
     function newMember() {
         i++;
         console.log(i);
-        document.getElementById("members-section").innerHTML += `<span class="input-field col s6">
-                <select name="member_instrument_${[i]}">
-                    <option value="" disabled selected>Instrument</option>
-                    {% for instrument in instruments %}
-                        <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
-                    {% endfor %}
-                </select>
-            </span>
-            <span class="input-field col s5">
-                <input id="jam_members" name="jam_member_${[i]}" type="text">
-                <label for="icon_prefix">Member Username</label>
-            </span>
-            <span class="input-field col s1">
-                <a class="waves-effect waves-light btn" id="new-member_${[i]}" onclick="newMember()">+</i></a>
-            </span>`;
+        document.getElementById("members-section").innerHTML += 
+        `<span class="input-field col s6">
+            <select name="member_instrument_${[i]}">
+                <option value="" disabled selected>Instrument</option>
+                {% for instrument in instruments %}
+                    <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                {% endfor %}
+            </select>
+        </span>
+        <span class="input-field col s5">
+            <input id="jam_members" name="jam_member_${[i]}" type="text">
+            <label for="icon_prefix">Member Username</label>
+        </span>
+        <span class="input-field col s1">
+            <a class="waves-effect waves-light btn" id="new-member_${[i]}" onclick="newMember()">+</i></a>
+        </span>`;
 
     }
 </script>

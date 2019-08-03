@@ -1,5 +1,4 @@
 import os
-import bcrypt
 from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
@@ -22,11 +21,13 @@ def get_jams():
         jams=mongo.db.jam_or_event.find(),
         counties=mongo.db.counties.find(),
         genres=mongo.db.genres.find(),
-        username=session['username'])
+        username=session['username'],
+        user_logged_in=user_logged_in)
     return render_template("jams.html",
         jams=mongo.db.jam_or_event.find(),
         counties=mongo.db.counties.find(),
-        genres=mongo.db.genres.find())
+        genres=mongo.db.genres.find(),
+        user_logged_in=user_logged_in)
 
 @app.route('/get_users')
 def get_users():
@@ -35,76 +36,87 @@ def get_users():
         return render_template("users.html",
         users=mongo.db.users.find(),
         counties=mongo.db.counties.find(),
-        username=session['username'])
+        username=session['username'],
+        user_logged_in=user_logged_in)
     return render_template("users.html",
         users=mongo.db.users.find(),
-        counties=mongo.db.counties.find())
+        counties=mongo.db.counties.find(),
+        user_logged_in=user_logged_in)
 
-@app.route('/add_jam')
+@app.route('/add_jam', methods=['POST', 'GET'])
 def add_jam():
+    user_logged_in = 'username' in session
+    if request.method == 'POST':
+        jams =  mongo.db.jam_or_event
+        jams.insert_one({
+                'jam_title':request.form.get('jam_title'),
+                'genre':request.form.get('genre'),
+                'date_of_jam': request.form.get('date_of_jam'),
+                'jam_location': request.form.get('jam_location'),
+                'jam_county':request.form.get('jam_county'),
+                'jam_member_1':request.form.get('jam_member_1'),
+                'jam_member_2':request.form.get('jam_member_2'),
+                'member_instrument_1':request.form.get('member_instrument_1'),
+                'member_instrument_2':request.form.get('member_instrument_2'),
+                'jam_notes':request.form.get('jam_notes'),
+                'jam_owner':session['username']
+            })
+        
+        print(request.form)
+        return redirect(url_for('get_jams'))
+    
     return render_template('addjam.html',
     instruments=mongo.db.instruments.find(),
     counties=mongo.db.counties.find(),
-    username=session['username'])
-
-@app.route('/insert_jam', methods=['POST'])
-def insert_jam():
-    jams =  mongo.db.jam_or_event
-    jams.insert_one(request.form.to_dict())
-    
-    print(request.form)
-    return redirect(url_for('get_jams'))
+    username=session['username'],
+    user_logged_in=user_logged_in)
     
 @app.route('/delete_jam/<jam_id>')
 def delete_jam(jam_id):
     mongo.db.jam_or_event.remove({'_id': ObjectId(jam_id)})
     return redirect(url_for('get_jams'))
 
-@app.route('/edit_jam/<jam_id>')
+@app.route('/edit_jam/<jam_id>', methods=['POST', 'GET'])
 def edit_jam(jam_id):
-    the_jam =  mongo.db.jam_or_event.find_one({"_id": ObjectId(jam_id)})
-    return render_template('editjam.html',
-    jam=the_jam,
-    instruments=mongo.db.instruments.find(),
-    counties=mongo.db.counties.find(),
-    username=session['username'])
-
-@app.route('/update_jam/<jam_id>', methods=["POST"])
-def update_jam(jam_id):
     user_logged_in = 'username' in session
-    if user_logged_in:
-        jams = mongo.db.jam_or_event
-        jams.update( {'_id': ObjectId(jam_id)},
-        {
-            'jam_title':request.form.get('jam_title'),
-            'genre':request.form.get('genre'),
-            'date_of_jam': request.form.get('date_of_jam'),
-            'jam_location': request.form.get('jam_location'),
-            'jam_postcode':request.form.get('jam_postcode'),
-            'jam_members':request.form.get('jam_members'),
-            'jam_instruments':request.form.get('jam_instruments'),
-            'jam_notes':request.form.get('jam_notes'),
-        })
-        return redirect(url_for('get_jams'))
+    the_jam =  mongo.db.jam_or_event.find_one({"_id": ObjectId(jam_id)})
+    username=session['username']
+    jam_owner = the_jam['jam_owner']
     
-
+    if request.method == 'POST':
+        if user_logged_in:
+            jams = mongo.db.jam_or_event
+            jams.update( {'_id': ObjectId(jam_id)},
+            {
+                'jam_title':request.form.get('jam_title'),
+                'genre':request.form.get('genre'),
+                'date_of_jam': request.form.get('date_of_jam'),
+                'jam_location': request.form.get('jam_location'),
+                'jam_county':request.form.get('jam_county'),
+                'jam_member_1':request.form.get('jam_member_1'),
+                'member_instrument_1':request.form.get('member_instrument_1'),
+                'jam_notes':request.form.get('jam_notes'),
+            })
+            return redirect(url_for('get_jams'))
+    print(username)
+    print(jam_owner)
+    if username == jam_owner:
+        return render_template('editjam.html',
+        jam=the_jam,
+        instruments=mongo.db.instruments.find(),
+        counties=mongo.db.counties.find(),
+        username=session['username'])
+    return render_template('guesteditjam.html',
+        jam=the_jam,
+        instruments=mongo.db.instruments.find(),
+        counties=mongo.db.counties.find(),
+        username=session['username'])
+        
 #search options
 
 
 
-#login system
-
-SALT = "asdfljheriun"
-
-@app.route('/go_to_login')
-def go_to_login():
-    user_logged_in = 'username' in session
-    
-    if user_logged_in:
-        session.clear()
-        return redirect(url_for('get_jams'))
-    
-    return render_template('login.html')
+#login system - As the project brief does not require a login system, I have not hashed passwords
 
 @app.route('/')
 def index():
@@ -117,18 +129,26 @@ def index():
         counties=mongo.db.counties.find(),
         genres=mongo.db.genres.find())
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-    users = mongo.db.users
-    hashpw =request.form['password'] + SALT
-    login_user = users.find_one({'username' : request.form['username']})
+    user_logged_in = 'username' in session
+    if request.method == 'POST':
+        users = mongo.db.users
+        password = request.form['password']
+        login_user = users.find_one({'username' : request.form['username']})
+            
+        if login_user:
+            if password == login_user['password']:
+                session['username'] = request.form['username']
+                return redirect(url_for('get_jams'))
+    
+        return render_template('re-login.html')
         
-    if login_user:
-        if hashpw == login_user['password']:
-            session['username'] = request.form['username']
-            return redirect(url_for('get_jams'))
-
-    return render_template('re-login.html')
+    if user_logged_in:
+        session.clear()
+        return redirect(url_for('get_jams'))
+    
+    return render_template('login.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -137,9 +157,8 @@ def register():
         existing_user = users.find_one({'username' : request.form['username']})
 
         if existing_user is None:
-            hashpass = (request.form['password'] + SALT)
             users.insert({'username' : request.form['username'], 
-            'password' : hashpass, 
+            'password' : request.form['password'], 
             'user_county' : request.form['user_county'],
             'user_instrument' : request.form['user_instrument']})
             session['username'] = request.form['username']
