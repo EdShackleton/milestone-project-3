@@ -1,18 +1,24 @@
 {% extends 'base.html'%} {% block content %}
-
 <div class="row">
-    <div class="col s8 offset-s2">
-        <div class="search-bar">
-            <select id="search-county-or-genre" name="county">
-                <option value="" disabled selected> Search by county...</option>
-                {% for county in counties %}
-                <option value="{{county.county_name}}">{{county.county_name}}</option>
-                {% endfor %}
-            </select>
-        </div>
+    <div class="page-title">
+        <h3>Jams</h3>
     </div>
-    <a href="" class="btn-floating btn-small waves-effect waves-light btn" id="search-button"><i class="material-icons">search</i></a>
 </div>
+
+{% if user_logged_in == False %}
+<div class="row">
+    <div class="new-user-card">
+        <h4 class="new-user-card-title">Welcome new jammer!</h4>
+        <br>
+        <p class="new-user-card-info">Start a new jam, or get involved in someone elses here!
+            <br>
+        Sound good? You'll need to sign up first. 
+            <br>
+        <a href="{{ url_for('register') }}">Sign up here!</a>
+        </p>
+    </div>
+</div>
+{% endif %}
 
 <ul class="collapsible" data-collapsible="accordion">
     
@@ -58,63 +64,63 @@
                         <p>{{jam.member_instrument_1}} - {{jam.jam_member_1}}</p>
                 </div>
             </div>
-            {% if jam.jam_member_2 %}
+            {% if jam.member_instrument_2 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_2}} - {{jam.jam_member_2}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_3 %}
+            {% if jam.member_instrument_3 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_3}} - {{jam.jam_member_3}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_4 %}
+            {% if jam.member_instrument_4 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_4}} - {{jam.jam_member_4}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_5 %}
+            {% if jam.member_instrument_5 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_5}} - {{jam.jam_member_5}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_6 %}
+            {% if jam.member_instrument_6 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_6}} - {{jam.jam_member_6}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_7 %}
+            {% if jam.member_instrument_7 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_7}} - {{jam.jam_member_7}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_8 %}
+            {% if jam.member_instrument_8 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_8}} - {{jam.jam_member_8}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_9 %}
+            {% if jam.member_instrument_9 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_9}} - {{jam.jam_member_9}}</p>
                 </div>
             </div>
             {% endif %}
-            {% if jam.jam_member_10 %}
+            {% if jam.member_instrument_10 %}
             <div class="row">
                 <div class="col s12">
                         <p>{{jam.member_instrument_10}} - {{jam.jam_member_10}}</p>

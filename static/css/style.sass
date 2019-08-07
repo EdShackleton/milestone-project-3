@@ -3,7 +3,7 @@
 $primary-color: #7D1538
 $secondary-color: #F9F9F9
 $third-color: #d97eff
-$fourth-color: #C45AB3
+$fourth-color: #b4ffba
 $fifth-color: #F45866
 
 /* Mixins */
@@ -41,8 +41,34 @@ body
     @extend %title
     margin: 0px 15px
 
+
 #username
     font-style: italic
+
+/* side nav */
+
+.side-nav
+    @extend %box
+    
+.side-nav li>a:hover
+    background-color: $third-color
+    color: white
+
+#sidenav-overlay
+    z-index: 996
+
+.username-sidenav
+    padding: 0 32px
+    font-style: italic
+
+/* page titles */
+
+.page-title
+    @extend %box
+    @extend %title
+    text-align: center
+    margin: 0 30%
+    
 
 /* search bar */
 
@@ -76,6 +102,18 @@ body
 
 /* Jams page */
 
+.new-user-card
+    @extend %box
+    text-align: center
+    margin: 0 20%
+    padding: 20px 10px
+
+.new-user-card-title
+    @extend %title
+
+.new-user-card-info
+    font-size: 15px
+
 .jams-list
     @extend %box
     font-family: 'Roboto', sans-serif
@@ -94,6 +132,8 @@ body
 .user-card
     @extend %box
     font-family: 'Roboto', sans-serif
+    margin: 0 20%
+    text-align: center
 
 .user-name
     @extend %title
@@ -127,27 +167,29 @@ body
 #member-10-details
     display: none
 
+/* edit jams */
+
+#hidden-jam-details
+    display: none
+
 /* other */
     
 .user-card
     @extend %box
 
 .btn
-    background-color: #b4ffba
+    background-color: $fourth-color
     
 .btn:hover
     background-color: $third-color
 
-.side-nav
-    @extend %box
-    
-.side-nav li>a:hover
-    background-color: $primary-color
-    color: white
-
 .row
     width: 100%
     margin: 5px
+
+.container .row
+    width: 100%
+    margin: 0
 
 p
     margin: 0

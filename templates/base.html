@@ -30,6 +30,7 @@
 
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
+                        <li class="username-sidenav"><strong>{{ username }}</strong></li>
                         <li><a href="{{ url_for('get_jams') }}">Jams</a></li>
                         <li><a href="{{ url_for('get_users') }}">Users</a></li>
                         {% if user_logged_in %}

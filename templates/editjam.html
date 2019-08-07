@@ -29,7 +29,11 @@
             </span>
                 <span class="input-field col s4">
                 <select name="jam_county">
-                    <option value="{{jam.jam_county}}" disabled selected>{{jam.jam_county}}</option>
+                    {% if jam.jam_county %}
+                    <option value="{{jam.jam_county}}">{{jam.jam_county}}</option>
+                    {% else %}
+                    <option value="" disabled selected>County</option>
+                    {% endif %}
                     {% for county in counties %}
                     <option value="{{county.county_name}}">{{county.county_name}}</option>
                     {% endfor %}
@@ -39,168 +43,239 @@
             <div class="row" id="members-section">
                 <div class="row" id="member-1-details">
                     <span class="input-field col s6">
-                        <select name="member_instrument_1">
-                            <option value="{{jam.member_instrument_1}}" disabled selected>{{jam.member_instrument_1}}</option>
+                        <select name="member_instrument_1" value="{{jam.member_instrument_1}}">
+                            <option value="{{jam.member_instrument_1}}">{{jam.member_instrument_1}}</option>
                             {% for instrument in instruments %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_1" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_1}}</label>
+                        <input id="jam_members" name="jam_member_1" value ="{{jam.jam_member_1}}" type="text">
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember1()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_2 %}
+                <div class="row" id="member-2-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-2-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_2">
-                            <option value="{{jam.member_instrument_2}}" disabled selected>{{jam.member_instrument_2}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_2 %}
+                            <option value="{{jam.member_instrument_2}}">{{jam.member_instrument_2}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_2 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_2" type="text">
+                        <input id="jam_members" name="jam_member_2" value ="{{jam.jam_member_2}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_2}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_2" onclick="newMember2()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_3 %}
+                <div class="row" id="member-3-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-3-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_3">
-                            <option value="{{jam.member_instrument_3}}" disabled selected>{{jam.member_instrument_3}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_3 %}
+                            <option value="{{jam.member_instrument_3}}">{{jam.member_instrument_3}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_3 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_3" type="text">
+                        <input id="jam_members" name="jam_member_3" value ="{{jam.jam_member_3}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_3}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_3" onclick="newMember3()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_4 %}
+                <div class="row" id="member-4-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-4-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_4">
-                            <option value="{{jam.member_instrument_4}}" disabled selected>{{jam.member_instrument_4}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_4 %}
+                            <option value="{{jam.member_instrument_4}}">{{jam.member_instrument_4}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_4 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_4" type="text">
+                        <input id="jam_members" name="jam_member_4" value ="{{jam.jam_member_4}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_4}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_4" onclick="newMember4()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_5 %}
+                <div class="row" id="member-5-details"  style="display:block;">
+                {% else %}
                 <div class="row" id="member-5-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_5">
-                            <option value="{{jam.member_instrument_5}}" disabled selected>{{jam.member_instrument_5}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_5 %}
+                            <option value="{{jam.member_instrument_5}}">{{jam.member_instrument_5}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_5 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_5" type="text">
+                        <input id="jam_members" name="jam_member_5" value ="{{jam.jam_member_5}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_5}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_5" onclick="newMember5()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_6 %}
+                <div class="row" id="member-6-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-6-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_6">
-                            <option value="{{jam.member_instrument_6}}" disabled selected>{{jam.member_instrument_6}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_6 %}
+                            <option value="{{jam.member_instrument_6}}">{{jam.member_instrument_6}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_6 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_6" type="text">
+                        <input id="jam_members" name="jam_member_6" value ="{{jam.jam_member_6}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_6}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_6" onclick="newMember6()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_7 %}
+                <div class="row" id="member-7-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-7-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_7">
-                            <option value="{{jam.member_instrument_7}}" disabled selected>{{jam.member_instrument_7}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_7 %}
+                            <option value="{{jam.member_instrument_7}}">{{jam.member_instrument_7}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_7 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_7" type="text">
+                        <input id="jam_members" name="jam_member_7" value ="{{jam.jam_member_7}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_7}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_7" onclick="newMember7()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_8 %}
+                <div class="row" id="member-8-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-8-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_8">
-                            <option value="{{jam.member_instrument_8}}" disabled selected>{{jam.member_instrument_8}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_8 %}
+                            <option value="{{jam.member_instrument_8}}">{{jam.member_instrument_8}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_8 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_8" type="text">
+                        <input id="jam_members" name="jam_member_8" value ="{{jam.jam_member_8}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_8}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_8" onclick="newMember8()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_9 %}
+                <div class="row" id="member-9-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-9-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_9">
-                            <option value="{{jam.member_instrument_9}}" disabled selected>{{jam.member_instrument_9}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_9 %}
+                            <option value="{{jam.member_instrument_9}}">{{jam.member_instrument_9}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_9 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_9" type="text">
+                        <input id="jam_members" name="jam_member_9" value ="{{jam.jam_member_9}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_9}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_9" onclick="newMember9()">+</i></a>
                     </span>
                 </div>
+                {% if jam.member_instrument_10 %}
+                <div class="row" id="member-10-details" style="display:block;">
+                {% else %}
                 <div class="row" id="member-10-details">
+                {% endif %}
                     <span class="input-field col s6">
                         <select name="member_instrument_10">
-                            <option value="{{jam.member_instrument_10}}" disabled selected>{{jam.member_instrument_10}}</option>
-                            {% for instrument in instruments %}
+                            {% if jam.member_instrument_10 %}
+                            <option value="{{jam.member_instrument_10}}">{{jam.member_instrument_10}}</option>
+                            {% else %}
+                            <option value="" disabled selected>Instrument</option>
+                            {% endif %}
+                            {% for instrument in instruments_10 %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
                             {% endfor %}
                         </select>
                     </span>
                     <span class="input-field col s5">
-                        <input id="jam_members" name="jam_member_10" type="text">
+                        <input id="jam_members" name="jam_member_10" value ="{{jam.jam_member_10}}" type="text">
                         <label for="icon_prefix">{{jam.jam_member_10}}</label>
                     </span>
                 </div>

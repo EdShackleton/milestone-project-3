@@ -20,14 +20,12 @@ def get_jams():
         return render_template("jams.html",
         jams=mongo.db.jam_or_event.find(),
         counties=mongo.db.counties.find(),
-        genres=mongo.db.genres.find(),
         username=session['username'],
         user_logged_in=user_logged_in)
     return render_template("jams.html",
-        jams=mongo.db.jam_or_event.find(),
-        counties=mongo.db.counties.find(),
-        genres=mongo.db.genres.find(),
-        user_logged_in=user_logged_in)
+    jams=mongo.db.jam_or_event.find(),
+    counties=mongo.db.counties.find(),
+    user_logged_in=user_logged_in)
 
 @app.route('/get_users')
 def get_users():
@@ -82,10 +80,19 @@ def add_jam():
         return redirect(url_for('get_jams'))
     
     return render_template('addjam.html',
-    instruments=mongo.db.instruments.find(),
     counties=mongo.db.counties.find(),
     username=session['username'],
-    user_logged_in=user_logged_in)
+    user_logged_in=user_logged_in,
+    instruments=mongo.db.instruments.find(),
+    instruments_2=mongo.db.instruments.find(),
+    instruments_3=mongo.db.instruments.find(),
+    instruments_4=mongo.db.instruments.find(),
+    instruments_5=mongo.db.instruments.find(),
+    instruments_6=mongo.db.instruments.find(),
+    instruments_7=mongo.db.instruments.find(),
+    instruments_8=mongo.db.instruments.find(),
+    instruments_9=mongo.db.instruments.find(),
+    instruments_10=mongo.db.instruments.find())
     
 @app.route('/delete_jam/<jam_id>')
 def delete_jam(jam_id):
@@ -101,14 +108,45 @@ def edit_jam(jam_id):
     
     if request.method == 'POST':
         if user_logged_in:
+            if username == jam_owner:
+                print(request.form)
+                jams = mongo.db.jam_or_event
+                jams.update( {'_id': ObjectId(jam_id)},
+                {
+                    'jam_title':request.form.get('jam_title'),
+                    'genre':request.form.get('genre'),
+                    'date_of_jam': request.form.get('date_of_jam'),
+                    'jam_location': request.form.get('jam_location'),
+                    'jam_county':request.form.get('jam_county'),
+                    'jam_member_1':request.form.get('jam_member_1'),
+                    'jam_member_2':request.form.get('jam_member_2'),
+                    'jam_member_3':request.form.get('jam_member_3'),
+                    'jam_member_4':request.form.get('jam_member_4'),
+                    'jam_member_5':request.form.get('jam_member_5'),
+                    'jam_member_6':request.form.get('jam_member_6'),
+                    'jam_member_7':request.form.get('jam_member_7'),
+                    'jam_member_8':request.form.get('jam_member_8'),
+                    'jam_member_9':request.form.get('jam_member_9'),
+                    'jam_member_10':request.form.get('jam_member_10'),
+                    'member_instrument_1':request.form.get('member_instrument_1'),
+                    'member_instrument_2':request.form.get('member_instrument_2'),
+                    'member_instrument_3':request.form.get('member_instrument_3'),
+                    'member_instrument_4':request.form.get('member_instrument_4'),
+                    'member_instrument_5':request.form.get('member_instrument_5'),
+                    'member_instrument_6':request.form.get('member_instrument_6'),
+                    'member_instrument_7':request.form.get('member_instrument_7'),
+                    'member_instrument_8':request.form.get('member_instrument_8'),
+                    'member_instrument_9':request.form.get('member_instrument_9'),
+                    'member_instrument_10':request.form.get('member_instrument_10'),
+                    'jam_notes':request.form.get('jam_notes'),
+                    'jam_owner':session['username']
+                })
+                return redirect(url_for('get_jams'))
+                
+            print(request.form)
             jams = mongo.db.jam_or_event
             jams.update( {'_id': ObjectId(jam_id)},
             {
-                'jam_title':request.form.get('jam_title'),
-                'genre':request.form.get('genre'),
-                'date_of_jam': request.form.get('date_of_jam'),
-                'jam_location': request.form.get('jam_location'),
-                'jam_county':request.form.get('jam_county'),
                 'jam_member_1':request.form.get('jam_member_1'),
                 'jam_member_2':request.form.get('jam_member_2'),
                 'jam_member_3':request.form.get('jam_member_3'),
@@ -129,36 +167,56 @@ def edit_jam(jam_id):
                 'member_instrument_8':request.form.get('member_instrument_8'),
                 'member_instrument_9':request.form.get('member_instrument_9'),
                 'member_instrument_10':request.form.get('member_instrument_10'),
+                'jam_title':request.form.get('jam_title'),
+                'genre':request.form.get('genre'),
+                'date_of_jam': request.form.get('date_of_jam'),
+                'jam_location': request.form.get('jam_location'),
+                'jam_county':request.form.get('jam_county'),
                 'jam_notes':request.form.get('jam_notes'),
-                'jam_owner':session['username']
-                
+                'jam_owner':request.form.get('jam_owner')
             })
             return redirect(url_for('get_jams'))
-    print(username)
-    print(jam_owner)
     if username == jam_owner:
         return render_template('editjam.html',
         jam=the_jam,
         instruments=mongo.db.instruments.find(),
+        instruments_2=mongo.db.instruments.find(),
+        instruments_3=mongo.db.instruments.find(),
+        instruments_4=mongo.db.instruments.find(),
+        instruments_5=mongo.db.instruments.find(),
+        instruments_6=mongo.db.instruments.find(),
+        instruments_7=mongo.db.instruments.find(),
+        instruments_8=mongo.db.instruments.find(),
+        instruments_9=mongo.db.instruments.find(),
+        instruments_10=mongo.db.instruments.find(),
         counties=mongo.db.counties.find(),
         username=session['username'])
     return render_template('guesteditjam.html',
         jam=the_jam,
         instruments=mongo.db.instruments.find(),
+        instruments_2=mongo.db.instruments.find(),
+        instruments_3=mongo.db.instruments.find(),
+        instruments_4=mongo.db.instruments.find(),
+        instruments_5=mongo.db.instruments.find(),
+        instruments_6=mongo.db.instruments.find(),
+        instruments_7=mongo.db.instruments.find(),
+        instruments_8=mongo.db.instruments.find(),
+        instruments_9=mongo.db.instruments.find(),
+        instruments_10=mongo.db.instruments.find(),
         counties=mongo.db.counties.find(),
         username=session['username'])
         
-#search options
-
-
-
 #login system - As the project brief does not require a login system, I have not hashed passwords
 
 @app.route('/')
 def index():
     users = mongo.db.users
-    if 'username' in session:
-        return render_template('welcome.html', username=session['username'])
+    user_logged_in = 'username' in session
+    if user_logged_in:
+        return render_template('jams.html',
+        jams=mongo.db.jam_or_event.find(),
+        counties=mongo.db.counties.find(),
+        username=session['username'])
 
     return render_template('jams.html',
         jams=mongo.db.jam_or_event.find(),

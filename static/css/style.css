@@ -1,13 +1,13 @@
 /* Variables */
 /* Mixins */
-.side-nav, .user-card, .jams-list, .blank-background {
+.user-card, .jams-list, .new-user-card, .page-title, .side-nav, .blank-background {
   background-color: #F9F9F9;
   color: #383838;
   border-color: white;
   opacity: 0.9;
 }
 
-.user-name, .jam-title, .brand-logo {
+.user-name, .jam-title, .new-user-card-title, .page-title, .brand-logo {
   font-family: "Lalezar", cursive;
 }
 
@@ -34,6 +34,27 @@ body {
 
 #username {
   font-style: italic;
+}
+
+/* side nav */
+.side-nav li > a:hover {
+  background-color: #d97eff;
+  color: white;
+}
+
+#sidenav-overlay {
+  z-index: 996;
+}
+
+.username-sidenav {
+  padding: 0 32px;
+  font-style: italic;
+}
+
+/* page titles */
+.page-title {
+  text-align: center;
+  margin: 0 30%;
 }
 
 /* search bar */
@@ -70,6 +91,16 @@ body {
 }
 
 /* Jams page */
+.new-user-card {
+  text-align: center;
+  margin: 0 20%;
+  padding: 20px 10px;
+}
+
+.new-user-card-info {
+  font-size: 15px;
+}
+
 .jams-list {
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -84,6 +115,8 @@ body {
 /* Users page */
 .user-card {
   font-family: "Roboto", sans-serif;
+  margin: 0 20%;
+  text-align: center;
 }
 
 /* Add Jams page */
@@ -123,6 +156,11 @@ body {
   display: none;
 }
 
+/* edit jams */
+#hidden-jam-details {
+  display: none;
+}
+
 /* other */
 .btn {
   background-color: #b4ffba;
@@ -132,14 +170,14 @@ body {
   background-color: #d97eff;
 }
 
-.side-nav li > a:hover {
-  background-color: #7D1538;
-  color: white;
-}
-
 .row {
   width: 100%;
   margin: 5px;
+}
+
+.container .row {
+  width: 100%;
+  margin: 0;
 }
 
 p {
