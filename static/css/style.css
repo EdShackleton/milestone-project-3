@@ -86,6 +86,43 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/* Add Jams page */
+#member-2-details {
+  display: none;
+}
+
+#member-3-details {
+  display: none;
+}
+
+#member-4-details {
+  display: none;
+}
+
+#member-5-details {
+  display: none;
+}
+
+#member-6-details {
+  display: none;
+}
+
+#member-7-details {
+  display: none;
+}
+
+#member-8-details {
+  display: none;
+}
+
+#member-9-details {
+  display: none;
+}
+
+#member-10-details {
+  display: none;
+}
+
 /* other */
 .btn {
   background-color: #b4ffba;

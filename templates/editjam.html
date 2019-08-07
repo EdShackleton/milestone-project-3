@@ -36,23 +36,174 @@
                 </select>
             </span>
             
-            
             <div class="row" id="members-section">
-                <span class="input-field col s6">
-                    <select name="member_instrument_1">
-                        <option value="{{jam.member_instrument_1}}" disabled selected>{{jam.member_instrument_1}}</option>
-                        {% for instrument in instruments %}
+                <div class="row" id="member-1-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_1">
+                            <option value="{{jam.member_instrument_1}}" disabled selected>{{jam.member_instrument_1}}</option>
+                            {% for instrument in instruments %}
                             <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
-                        {% endfor %}
-                    </select>
-                </span>
-                <span class="input-field col s5">
-                    <input id="jam_members" name="jam_member_1" type="text" class="validate" value="{{jam.jam_member_1}}">
-                    <label for="icon_prefix">Member Username</label>
-                </span>
-                <span class="input-field col s1">
-                    <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember()">+</i></a>
-                </span>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_1" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_1}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_1" onclick="newMember1()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-2-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_2">
+                            <option value="{{jam.member_instrument_2}}" disabled selected>{{jam.member_instrument_2}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_2" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_2}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_2" onclick="newMember2()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-3-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_3">
+                            <option value="{{jam.member_instrument_3}}" disabled selected>{{jam.member_instrument_3}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_3" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_3}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_3" onclick="newMember3()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-4-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_4">
+                            <option value="{{jam.member_instrument_4}}" disabled selected>{{jam.member_instrument_4}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_4" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_4}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_4" onclick="newMember4()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-5-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_5">
+                            <option value="{{jam.member_instrument_5}}" disabled selected>{{jam.member_instrument_5}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_5" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_5}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_5" onclick="newMember5()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-6-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_6">
+                            <option value="{{jam.member_instrument_6}}" disabled selected>{{jam.member_instrument_6}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_6" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_6}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_6" onclick="newMember6()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-7-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_7">
+                            <option value="{{jam.member_instrument_7}}" disabled selected>{{jam.member_instrument_7}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_7" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_7}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_7" onclick="newMember7()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-8-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_8">
+                            <option value="{{jam.member_instrument_8}}" disabled selected>{{jam.member_instrument_8}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_8" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_8}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_8" onclick="newMember8()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-9-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_9">
+                            <option value="{{jam.member_instrument_9}}" disabled selected>{{jam.member_instrument_9}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_9" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_9}}</label>
+                    </span>
+                    <span class="input-field col s1">
+                        <a class="waves-effect waves-light btn" id="new-member_9" onclick="newMember9()">+</i></a>
+                    </span>
+                </div>
+                <div class="row" id="member-10-details">
+                    <span class="input-field col s6">
+                        <select name="member_instrument_10">
+                            <option value="{{jam.member_instrument_10}}" disabled selected>{{jam.member_instrument_10}}</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument.instrument_name}}">{{instrument.instrument_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                    <span class="input-field col s5">
+                        <input id="jam_members" name="jam_member_10" type="text">
+                        <label for="icon_prefix">{{jam.jam_member_10}}</label>
+                    </span>
+                </div>
             </div>
             
             <div class="row">
@@ -76,5 +227,41 @@
         $('#date_of_jam').pickadate('picker').set('select', date_of_jam, { format: 'dd/mm/yyyy' }).trigger('change');
     });
 </script>
-
+<script type="text/javascript">
+        function newMember1() {
+            document.getElementById("member-2-details").style.display = "block";
+        }
+    
+        function newMember2() {
+            document.getElementById("member-3-details").style.display = "block";
+        }
+    
+        function newMember3() {
+            document.getElementById("member-4-details").style.display = "block";
+        }
+    
+        function newMember4() {
+            document.getElementById("member-5-details").style.display = "block";
+        }
+    
+        function newMember5() {
+            document.getElementById("member-6-details").style.display = "block";
+        }
+    
+        function newMember6() {
+            document.getElementById("member-7-details").style.display = "block";
+        }
+    
+        function newMember7() {
+            document.getElementById("member-8-details").style.display = "block";
+        }
+    
+        function newMember8() {
+            document.getElementById("member-9-details").style.display = "block";
+        }
+    
+        function newMember9() {
+            document.getElementById("member-10-details").style.display = "block";
+        }
+    </script>
 {% endblock %}
