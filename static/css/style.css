@@ -156,6 +156,19 @@ body {
   display: none;
 }
 
+/* date picker */
+.picker__date-display {
+  background-color: #d97eff;
+}
+
+.picker__close, .picker__today, .picker__clear {
+  color: #d97eff;
+}
+
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+  background-color: #b4ffba;
+}
+
 /* edit jams */
 #hidden-jam-details {
   display: none;

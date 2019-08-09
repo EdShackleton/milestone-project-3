@@ -22,7 +22,7 @@
                         <li><a href="{{ url_for('get_jams') }}">Jams</a></li>
                         <li><a href="{{ url_for('get_users') }}">Users</a></li>
                         {% if user_logged_in %}
-                        <li><a href="{{ url_for('add_jam') }}">+</a></li>
+                        <li><a href="{{ url_for('add_jam') }}">New Jam</a></li>
                         <li><a href="{{ url_for('login') }}">Logout</a></li>
                         {% else %}
                         <li><a href="{{ url_for('login') }}">Login</a></li>
