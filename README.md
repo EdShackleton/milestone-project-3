@@ -27,8 +27,6 @@ Here's a link to the original diagram - https://dbdiagram.io/d/5d4d79c7ced98361d
 
 FEATURES
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
-
 EXISTING FEATURES
 
 View Jams - Allows users to see all created jams
