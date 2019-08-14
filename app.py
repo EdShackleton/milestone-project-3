@@ -300,6 +300,6 @@ def register():
 
 if __name__ == '__main__':
     app.secret_key = secrets.APP_SECRET
-    app.run(host=int(os.environ.get('IP')),
+    app.run(host=(os.environ.get('IP')),
             port=int(os.environ.get('PORT'), 8080),
             debug=True)
