@@ -1,149 +1,93 @@
 {% extends 'base.html'%} {% block content %}
-<div class="row">
-    <div class="page-title">
-        <h3>Jams</h3>
-    </div>
-</div>
+<div class="everything-box">
+    <h2 class="page-title-text">Jams</h2>
 
-{% if user_logged_in == False %}
-<div class="row">
-    <div class="new-user-card">
-        <h4 class="new-user-card-title">Welcome new jammer!</h4>
-        <br>
-        <p class="new-user-card-info">Start a new jam for up to 10 people, or get involved in someone elses here!
+    {% if user_logged_in == False %}
+    <div class="row">
+        <div class="new-user-card">
+            <h4 class="new-user-card-title">Welcome new jammer!</h4>
             <br>
-        Sound good? You'll need to sign up first. 
-            <br>
-        <a href="{{ url_for('register') }}">Sign up here!</a>
-        </p>
-    </div>
-</div>
-{% endif %}
-
-<ul class="collapsible" data-collapsible="accordion">
-    
-    {% for jam in jams %}
-    
-    <li>
-        <div class="collapsible-header jams-list">
-            <div class="row">
-                <div class="jam-title col s12">
-                    <h4>{{jam.jam_title}}</h4>
-                </div>
-                <div class="date col s4">
-                    <p>{{jam.date_of_jam}}</p>
-                </div>
-                <div class="genre col s4">
-                    <p>{{jam.genre}}</p>
-                </div>
-                <div class="location col s4">
-                    <p>{{jam.jam_county}}</p>
-                </div>
-            </div>
+            <p class="new-user-card-info">Start a new jam for up to 10 people, or get involved in someone elses here!
+                <br>
+            Sound good? You'll need to sign up first. 
+                <br>
+            <a href="{{ url_for('register') }}">Sign up here!</a>
+            </p>
         </div>
-
-        <div class="collapsible-body other-jam-info">
-            <div class="row">
-                <div class="col s12"><p><strong>created by {{jam.jam_owner}}</strong></p></div>
+    </div>
+    {% endif %}
+    
+    <ul class="collapsible" data-collapsible="accordion" class="jams-list-accordion">
+        
+        {% for jam in jams %}
+        
+        <li>
+            <div class="collapsible-header jams-list">
+                <div class="row">
+                    <div class="jam-title col s12">
+                        <h4>{{jam.jam_title}}</h4>
+                    </div>
+                    <div class="date col s4">
+                        <p>{{jam.date_of_jam}}</p>
+                    </div>
+                    <div class="genre col s4">
+                        <p>{{jam.genre}}</p>
+                    </div>
+                    <div class="location col s4">
+                        <p>{{jam.jam_county}}</p>
+                    </div>
+                </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col s12"><p><strong>Address</strong></p></div>
-            </div>
-            <div class="row">
-                <div class="location col s12">
+    
+            <div class="collapsible-body other-jam-info">
+                <div class="row">
+                    <div class="col s5">
+                        <p><strong>created by {{jam.jam_owner}}</strong></p>
+                        <p><strong>Address</strong></p>
                         <p>{{jam.jam_location}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12"><p><strong>Members</strong></p></div>
-            </div>
-            
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_1}} - {{jam.jam_member_1}}</p>
-                </div>
-            </div>
-            {% if jam.member_instrument_2 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_2}} - {{jam.jam_member_2}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_3 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_3}} - {{jam.jam_member_3}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_4 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_4}} - {{jam.jam_member_4}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_5 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_5}} - {{jam.jam_member_5}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_6 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_6}} - {{jam.jam_member_6}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_7 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_7}} - {{jam.jam_member_7}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_8 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_8}} - {{jam.jam_member_8}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_9 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_9}} - {{jam.jam_member_9}}</p>
-                </div>
-            </div>
-            {% endif %}
-            {% if jam.member_instrument_10 %}
-            <div class="row">
-                <div class="col s12">
-                        <p>{{jam.member_instrument_10}} - {{jam.jam_member_10}}</p>
-                </div>
-            </div>
-            {% endif %}
-            <div class="row">
-                <div class="col s12">
-                    <p><strong>Notes</strong></p>
-                </div>
-                <div class="col s10">
-                    <p>{{jam.jam_notes}}</p>
-                </div>
-                {% if user_logged_in %}
-                <div class="col s2">
-                    <a href="{{url_for('edit_jam', jam_id=jam._id)}}" class="btn-floating btn-small waves-effect waves-light btn" id="edit"><i class="material-icons">edit</i></a>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </li>
-    {% endfor %}
+                        <p><strong>Notes</strong></p>
+                        <p>{{jam.jam_notes}}</p>
+                    </div>
     
-</ul>
-
+                    <div class="col s5"><p><strong>Members</strong></p>
+                        <p>{{jam.member_instrument_1}} - {{jam.jam_member_1}}</p>
+                        {% if jam.member_instrument_2 %}
+                            <p>{{jam.member_instrument_2}} - {{jam.jam_member_2}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_3 %}
+                            <p>{{jam.member_instrument_3}} - {{jam.jam_member_3}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_4 %}
+                            <p>{{jam.member_instrument_4}} - {{jam.jam_member_4}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_5 %}
+                            <p>{{jam.member_instrument_5}} - {{jam.jam_member_5}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_6 %}
+                            <p>{{jam.member_instrument_6}} - {{jam.jam_member_6}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_7 %}
+                            <p>{{jam.member_instrument_7}} - {{jam.jam_member_7}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_8 %}
+                            <p>{{jam.member_instrument_8}} - {{jam.jam_member_8}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_9 %}
+                            <p>{{jam.member_instrument_9}} - {{jam.jam_member_9}}</p>
+                        {% endif %}
+                        {% if jam.member_instrument_10 %}
+                            <p>{{jam.member_instrument_10}} - {{jam.jam_member_10}}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col s2">
+                        {% if user_logged_in %}
+                        <a href="{{url_for('edit_jam', jam_id=jam._id)}}" class="btn-floating btn-small waves-effect waves-light btn" id="edit"><i class="material-icons">edit</i></a>
+                        {% endif %}
+                    </div>
+                </div>
+        </li>
+        {% endfor %}
+        
+    </ul>
+</div>
 {% endblock %}

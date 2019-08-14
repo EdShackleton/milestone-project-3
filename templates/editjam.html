@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 <div class="blank-background">
-    <h3 class="jam-title">Edit Jam</h3>
+    <h2 class="jam-title">Edit Jam</h2>
     <div class="row">
         <form action="{{ url_for('edit_jam', jam_id=jam._id) }}" method="POST" class="col s12">
             <div class="row">

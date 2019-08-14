@@ -90,9 +90,8 @@ I deployed the project using both Github and Heroku.
 
 I pushed my code to Github throughout it's creation, to allow myself to go back if I'd made errors.
 
-I initially had an issue with the Github deployment, as it would open on this Readme file. I sorted this by...
-
-I also had issues with the Heroku app...
+I had issues with the Heroku app, and after much troubleshooting, the final if statement on app.py was to blame.
+I updated this and finally got it working on Heroku.
 
 MEDIA
 
@@ -115,3 +114,5 @@ I also used this Youtube video to help create the login system - https://www.you
 
 Last but not least, a HUGE thanks to both Chris Zielinski, and Brian Macharia, my former and current mentors, who made the 
 seemingly unresolveable issues resolveable, and helped me understand the theory behind this.
+
+Also a big thank you to Michael, my Tutor, who helped me with the deployment to Heroku

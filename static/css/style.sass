@@ -20,7 +20,6 @@ $fifth-color: #F45866
 
 /* background */
 
-
 body
     background: url(/static/images/background-pic-purple.jpg) top left no-repeat
     background-attachment: fixed
@@ -28,7 +27,12 @@ body
 .blank-background
     @extend %box
     padding: 3% 10%
-    margin-top: 5px
+    margin-top: 25px
+
+.everything-box
+    @extend %box
+    padding-top: 3%
+    margin-top: 25px
 
 /* nav bar */
 
@@ -63,44 +67,17 @@ body
 
 /* page titles */
 
-.page-title
-    @extend %box
+.page-title-text
     @extend %title
-    text-align: center
-    margin: 0 30%
+    margin-bottom: 0
+    padding-left: 10%
     
-
-/* search bar */
-
-.search-bar
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2)
-    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2)
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2)
-    background-color: #f5ecf9
-    padding: 0 !important
-    color: #383838
-    font-family: 'Roboto', sans-serif
-    margin-top: 5px
-    height: 38px
-
-.select-wrapper input.select-dropdown
-    margin: 0
-    border: none
-    width: 100%
-    font-size: 16px
-    height: 38px
-    padding-left: 5px
-
-.dropdown-content li>span
-    color: #383838
-    font-family: 'Roboto', sans-serif
-
-#search-button
-    height: 38px
-    margin-top: 5px
-    border-radius: 2px
-
 /* Jams page */
+
+.collapsible
+    border-top: none
+    box-shadow: none
+    
 
 .new-user-card
     @extend %box
@@ -127,12 +104,15 @@ body
     border-color: white
     opacity: 0.9
 
+#edit
+    border-radius: 2px
+
 /* Users page */
 
 .user-card
     @extend %box
     font-family: 'Roboto', sans-serif
-    margin: 0 20%
+    margin: 0
     text-align: center
 
 .user-name
