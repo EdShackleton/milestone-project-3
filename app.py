@@ -6,9 +6,9 @@ import secrets
 
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = "Jamtree"
-app.config["MONGO_URI"] = (
-    "mongodb+srv://root:%s@myfirstcluster-8h2g0.mongodb.net/Jamtree?retryWrites=true&w=majority"
+app.config['MONGO_DBNAME'] = 'Jamtree'
+app.config['MONGO_URI'] = (
+    'mongodb+srv://root:%s@myfirstcluster-8h2g0.mongodb.net/Jamtree?retryWrites=true&w=majority'
     ) %secrets.MONGOPASSWORD
 
 mongo = PyMongo(app)
@@ -17,47 +17,45 @@ mongo = PyMongo(app)
 
 @app.route('/get_jams')
 def get_jams():
-    """ This works as the homepage, and shows all the existing jams in the database. """
+    ''' This works as the homepage, and shows all the existing jams in the database. '''
     
     user_logged_in = 'username' in session
     if user_logged_in:
         # If the user is logged in, display their username as well as allow them to edit a jam #
         return render_template(
-            "jams.html",
+            'jams.html',
             jams=mongo.db.jam_or_event.find(),
             username=session['username'],
             user_logged_in=user_logged_in
             )
 
     return render_template(
-        "jams.html",
+        'jams.html',
         jams=mongo.db.jam_or_event.find(),
-        user_logged_in=user_logged_in
         )
 
 @app.route('/get_users')
 def get_users():
-    """ This shows all the existing users in the database. """
+    ''' This shows all the existing users in the database. '''
     
     user_logged_in = 'username' in session
     if user_logged_in:
         # If the user is logged in, show username in navbar #
         return render_template(
-            "users.html",
+            'users.html',
             users=mongo.db.users.find(),
             username=session['username'],
             user_logged_in=user_logged_in
             )
 
     return render_template(
-        "users.html",
+        'users.html',
         users=mongo.db.users.find(),
-        user_logged_in=user_logged_in
         )
 
 @app.route('/add_jam', methods=['POST', 'GET'])
 def add_jam():
-    """ This brings up, and posts the form to create a new jam. """
+    ''' This brings up, and posts the form to create a new jam. '''
 
     user_logged_in = 'username' in session
     if request.method == 'POST':
@@ -114,17 +112,17 @@ def add_jam():
     
 @app.route('/delete_jam/<jam_id>')
 def delete_jam(jam_id):
-    """ This deletes a jam """
+    ''' This deletes a jam '''
     
     mongo.db.jam_or_event.remove({'_id': ObjectId(jam_id)})
     return redirect(url_for('get_jams'))
 
 @app.route('/edit_jam/<jam_id>', methods=['POST', 'GET'])
 def edit_jam(jam_id):
-    """ This route determines if you are the creator of the jam, and brings up the relevant edit page. """
+    ''' This route determines if you are the creator of the jam, and brings up the relevant edit page. '''
     
     user_logged_in = 'username' in session
-    the_jam =  mongo.db.jam_or_event.find_one({"_id": ObjectId(jam_id)})
+    the_jam =  mongo.db.jam_or_event.find_one({'_id': ObjectId(jam_id)})
     username=session['username']
     jam_owner = the_jam['jam_owner']
     
@@ -236,7 +234,7 @@ def edit_jam(jam_id):
 
 @app.route('/')
 def index():
-    """ This is used to redirect users who have logged in """
+    ''' This is used to redirect users who have logged in '''
     users = mongo.db.users
     user_logged_in = 'username' in session
     if user_logged_in:
@@ -254,7 +252,7 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    """ This is the login system: PLEASE NOTE - the passwords are saved raw, as this was not in the scope of the project brief """
+    ''' This is the login system: PLEASE NOTE - the passwords are saved raw, as this was not in the scope of the project brief '''
     user_logged_in = 'username' in session
     if request.method == 'POST':
         users = mongo.db.users
@@ -275,7 +273,7 @@ def login():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    """ This is the registration route, that creates a user and saves their details. """
+    ''' This is the registration route, that creates a user and saves their details. '''
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'username' : request.form['username']})
@@ -297,6 +295,13 @@ def register():
     return render_template('register.html',
     instruments=mongo.db.instruments.find(),
     counties=mongo.db.counties.find())
+
+@app.route('/logout')
+def logout():
+    user_logged_in = 'username' in session
+    if user_logged_in:
+        session.clear()
+        return redirect(url_for('get_jams'))
 
 if __name__ == '__main__':
     app.secret_key = secrets.APP_SECRET

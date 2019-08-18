@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 <div class="everything-box">
-    <h2 class="page-title-text">Jams</h2>
+    <h2 class="page-title">Jams</h2>
 
     {% if user_logged_in == False %}
     <div class="row">
@@ -25,7 +25,7 @@
             <div class="collapsible-header jams-list">
                 <div class="row">
                     <div class="jam-title col s12">
-                        <h4>{{jam.jam_title}}</h4>
+                        <h4 class="jam-title-text">{{jam.jam_title}}</h4>
                     </div>
                     <div class="date col s4">
                         <p>{{jam.date_of_jam}}</p>

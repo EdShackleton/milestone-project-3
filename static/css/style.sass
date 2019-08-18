@@ -22,7 +22,10 @@ $fifth-color: #F45866
 
 body
     background: url(/static/images/background-pic-purple.jpg) top left no-repeat
+    background-color: #010815
     background-attachment: fixed
+    height: 100vh
+    width: 100vw
     
 .blank-background
     @extend %box
@@ -67,7 +70,7 @@ body
 
 /* page titles */
 
-.page-title-text
+.page-title
     @extend %title
     margin-bottom: 0
     padding-left: 10%
@@ -103,9 +106,6 @@ body
     background-color: #F4CEFF
     border-color: white
     opacity: 0.9
-
-#edit
-    border-radius: 2px
 
 /* Users page */
 
@@ -163,6 +163,12 @@ body
 #hidden-jam-details
     display: none
 
+/* login */
+
+.page-title-login
+    @extend %title
+    padding-left: 0
+
 /* other */
     
 .user-card
@@ -184,5 +190,35 @@ body
 
 p
     margin: 0
-    
+
+/* smaller screen differences */
+
+@media screen and (min-width: 800px)
+    .everything-box
+        font-size: 30px
+    .page-title
+        font-size: 60px
+    .jam-title-text
+        font-size: 50px
+    .input-field label
+        font-size: 25px
+    .select-wrapper input.select-dropdown
+        font-size: 25px
+    input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea
+        height: 4rem
+    .btn, .btn-large, .btn-flat
+        height: 50px
+    .btn, .btn-large, .btn-floating, .btn-large, .btn-flat
+        font-size: 25px
+    .btn-floating
+        height: 50px
+        width: 50px
+    .username-sidenav
+        font-size: 30px
+    .side-nav li>a
+        font-size: 25px
+    input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea
+        font-size: 25px
+    .sign-up-here
+        font-size: 20px
 /* When starting to use sass, type into console: sass --watch static/css/style.sass:static/css/style.css */

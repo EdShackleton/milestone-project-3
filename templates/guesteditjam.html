@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 <div class="blank-background">
-    <h2 class="jam-title">Edit Jam</h2>
+    <h2 class="page-title">Edit Jam</h2>
     <div class="row">
         <form action="{{ url_for('edit_jam', jam_id=jam._id) }}" method="POST" class="col s12">
             <div id="hidden-jam-details">
@@ -76,7 +76,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_2" value ="{{jam.jam_member_2}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_2}}</label>
                     </span>
                     </div>
                 {% if jam.member_instrument_3 %}
@@ -98,7 +97,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_3" value ="{{jam.jam_member_3}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_3}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_4 %}
@@ -120,7 +118,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_4" value ="{{jam.jam_member_4}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_4}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_5 %}
@@ -142,7 +139,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_5" value ="{{jam.jam_member_5}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_5}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_6 %}
@@ -164,7 +160,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_6" value ="{{jam.jam_member_6}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_6}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_7 %}
@@ -186,7 +181,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_7" value ="{{jam.jam_member_7}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_7}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_8 %}
@@ -208,7 +202,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_8" value ="{{jam.jam_member_8}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_8}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_9 %}
@@ -230,7 +223,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_9" value ="{{jam.jam_member_9}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_9}}</label>
                     </span>
                 </div>
                 {% if jam.member_instrument_10 %}
@@ -252,7 +244,6 @@
                     </span>
                     <span class="input-field col s6">
                         <input id="jam_members" name="jam_member_10" value ="{{jam.jam_member_10}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_10}}</label>
                     </span>
                 </div>
             </div>

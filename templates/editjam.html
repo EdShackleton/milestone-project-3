@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 <div class="blank-background">
-    <h2 class="jam-title">Edit Jam</h2>
+    <h2 class="page-title">Edit Jam</h2>
     <div class="row">
         <form action="{{ url_for('edit_jam', jam_id=jam._id) }}" method="POST" class="col s12">
             <div class="row">
@@ -76,7 +76,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_2" value ="{{jam.jam_member_2}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_2}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_2" onclick="newMember2()">+</i></a>
@@ -101,7 +100,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_3" value ="{{jam.jam_member_3}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_3}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_3" onclick="newMember3()">+</i></a>
@@ -126,7 +124,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_4" value ="{{jam.jam_member_4}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_4}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_4" onclick="newMember4()">+</i></a>
@@ -151,7 +148,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_5" value ="{{jam.jam_member_5}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_5}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_5" onclick="newMember5()">+</i></a>
@@ -176,7 +172,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_6" value ="{{jam.jam_member_6}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_6}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_6" onclick="newMember6()">+</i></a>
@@ -201,7 +196,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_7" value ="{{jam.jam_member_7}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_7}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_7" onclick="newMember7()">+</i></a>
@@ -226,7 +220,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_8" value ="{{jam.jam_member_8}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_8}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_8" onclick="newMember8()">+</i></a>
@@ -251,7 +244,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_9" value ="{{jam.jam_member_9}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_9}}</label>
                     </span>
                     <span class="input-field col s1">
                         <a class="waves-effect waves-light btn" id="new-member_9" onclick="newMember9()">+</i></a>
@@ -276,7 +268,6 @@
                     </span>
                     <span class="input-field col s5">
                         <input id="jam_members" name="jam_member_10" value ="{{jam.jam_member_10}}" type="text">
-                        <label for="icon_prefix">{{jam.jam_member_10}}</label>
                     </span>
                 </div>
             </div>
