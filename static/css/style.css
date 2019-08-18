@@ -183,7 +183,7 @@ p {
 }
 
 /* smaller screen differences */
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 600px) {
   .everything-box {
     font-size: 30px;
   }
