@@ -193,15 +193,15 @@ p {
   }
 
   .jam-title-text {
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .input-field label {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .select-wrapper input.select-dropdown {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
@@ -213,7 +213,7 @@ p {
   }
 
   .btn, .btn-large, .btn-floating, .btn-large, .btn-flat {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .btn-floating {
@@ -230,7 +230,7 @@ p {
   }
 
   input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .sign-up-here {
